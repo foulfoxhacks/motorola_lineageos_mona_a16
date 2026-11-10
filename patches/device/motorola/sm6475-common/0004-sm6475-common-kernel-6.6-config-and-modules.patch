@@ -1,0 +1,36 @@
+diff --git a/BoardConfigCommon.mk b/BoardConfigCommon.mk
+index 27a6fcb..7c2a999 100644
+--- a/BoardConfigCommon.mk
++++ b/BoardConfigCommon.mk
+@@ -85,11 +85,12 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+ BOARD_RAMDISK_USE_LZ4 := true
+ BOARD_USES_GENERIC_KERNEL_IMAGE := true
+ TARGET_KERNEL_SOURCE := kernel/motorola/sm6475
++# Kernel 6.6 (msm-kernel naming): <target>_perf.config is the production vendor fragment,
++# replacing 5.10-era <target>_GKI.config. Motorola's ext_config fragments only set
++# symbols this kernel does not define (DTB selection, UFS HID), so they are not used.
+ TARGET_KERNEL_CONFIG := \
+     gki_defconfig \
+-    vendor/parrot_GKI.config \
+-    vendor/ext_config/moto-parrot.config \
+-    vendor/ext_config/moto-parrot-gki.config
++    vendor/parrot_perf.config
+ 
+ TARGET_KERNEL_EXT_MODULE_ROOT := kernel/motorola/sm6475-modules
+ 
+@@ -105,7 +106,6 @@ TARGET_KERNEL_EXT_MODULES := \
+     qcom/opensource/mmrm-driver \
+     qcom/opensource/audio-kernel \
+     qcom/opensource/camera-kernel \
+-    qcom/opensource/cvp-kernel \
+     qcom/opensource/dataipa/drivers/platform/msm \
+     qcom/opensource/datarmnet/core \
+     qcom/opensource/datarmnet-ext/aps \
+@@ -116,7 +116,6 @@ TARGET_KERNEL_EXT_MODULES := \
+     qcom/opensource/datarmnet-ext/sch \
+     qcom/opensource/datarmnet-ext/wlan \
+     qcom/opensource/display-drivers/msm \
+-    qcom/opensource/eva-kernel \
+     qcom/opensource/video-driver \
+     qcom/opensource/wlan/qcacld-3.0/.adrastea \
+     qcom/opensource/wlan/qcacld-3.0/.qca6750

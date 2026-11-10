@@ -18,7 +18,13 @@ package, or GitHub. None of it is copied from older notes.
 | `breakfast mona` (lunch `lineage_mona-cp2a-userdebug`, PLATFORM_VERSION 17, `CP2A.260605.016`) | ✅ product config resolves |
 | Soong analysis | ✅ **passes with no errors** (2026-11-10, 2 h 53 m on a 10 GB WSL). It wrote `make_vars`/`late`/`installs-lineage_mona.mk`, then was killed by SIGHUP from a closed terminal while writing the ninja file. Re-running detached in tmux (`scripts/start-build.sh`). |
 | Kati | ✅ passes (2026-11-10 13:45), including packaging rules and the license/SBOM check. It had failed at 08:38 on 4 non-existent `PRODUCT_PACKAGES` (legacy HIDL audio HAL + `MotoNrEnabler`), fixed by switching to the AIDL audio HAL (`patches/*/0003`). |
-| ninja / compile | ⏳ running since 13:45 (`-j4`, expected 8–16 h) |
+| ninja / compile | ❌ blocked on the kernel stage (2026-11-10 14:16). Details below. |
+
+### Kernel stage (2026-11-10)
+
+1. `run_build.sh` set `NINJA_ARGS="-j4"`. lineage-24.0 executes with **siso**, which rejects it (`flag provided but not defined: -j4`). ✅ Removed.
+2. The kernel config named the 5.10-era fragment `vendor/parrot_GKI.config` and two Motorola `ext_config` fragments. None of them exist in the LineageOS 6.6 kernel. ✅ `patches/device/motorola/sm6475-common/0004`: `gki_defconfig` + `vendor/parrot_perf.config` (msm-kernel 6.6 naming, the fragment Motorola's own parrot build uses). Motorola's fragments only set symbols this kernel doesn't define. Also dropped `cvp-kernel`/`eva-kernel`, which are not in `sm6475-modules` and not on stock.
+3. ⏸ **35 Motorola driver dirs are missing** (`motorola/drivers/...`: touch, fingerprint, stylus, charger, sensors, NFC, …). LineageOS's `sm6475-modules` has no `motorola/` directory; its parent `sm7435-modules` does. Motorola publishes these drivers for exactly this firmware as `MotorolaMobilityLLC/motorola-kernel-modules`, tag `MMI-W1VAS36.62-22-16-16`. All 35 paths are present at that tag. The proposed fix adds it to `local_manifests/mona.xml` at `kernel/motorola/sm6475-modules/motorola`. **Waiting on approval to fetch it.**
 | Boot on hardware | not reached yet |
 
 ### Why AIDL conflicts are the main blocker

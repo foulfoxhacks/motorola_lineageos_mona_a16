@@ -25,7 +25,10 @@ done
 
 # Memory/concurrency for a ~10 GB WSL. soong_build alone peaks ~9.5 GB; raise -j once WSL has >= 16 GB.
 export _JAVA_OPTIONS="-Xmx4g"
-export NINJA_ARGS="-j4"
+# Do NOT set NINJA_ARGS="-j4": lineage-24.0 executes with siso, whose Go flag parser
+# rejects "-j4" ("flag provided but not defined: -j4") and kills the build right after
+# Kati. The job count reaches siso as --local_jobs via `mka bacon -j4` below.
+unset NINJA_ARGS
 
 # Source LineageOS build environment
 source build/envsetup.sh
