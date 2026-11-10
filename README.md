@@ -125,6 +125,8 @@ extract them from your own copy of the stock firmware.
     ├── extract-blobs.sh, fix-extract-tools.sh   blob extraction from stock firmware
     ├── run_build.sh, start-build.sh             build launchers (start-build = detached tmux)
     ├── wsl-keepalive.ps1      keep the WSL distro alive during long builds (tmux alone dies with it)
+    ├── keep-awake.ps1         stop Windows idle-sleep until the build result is written
+    ├── post-build.sh          on build end: collect zip/images to C:\mona_work\out, write BUILD_RESULT.txt
     ├── fix-tree-issues.sh, trim-missing-blobs.sh, fix-vendor-deps.sh,
     │   fix_goodix.py, fix_remaining_aidls.py, fix_qcril_sql.py,
     │   add_missing_entries.py, append_blobs.py, append_final_blobs.py

@@ -14,6 +14,37 @@ $env:Path = "C:\mona_work\platform-tools;$env:Path"
 
 ---
 
+## Unattended builds (runs without Claude or any open window)
+
+Three detached pieces, none of them a child of your terminal or of Claude:
+
+| Piece | What it does | Ends |
+|---|---|---|
+| `scripts/wsl-keepalive.ps1` (PS) | a hidden `wsl.exe … sleep infinity`, so WSL doesn't shut the distro (and tmux) down | stopped by `post-build.sh`, or `-Stop` |
+| `scripts/start-build.sh` (WSL) | runs the build in tmux session `build`, and `post-build.sh` in tmux session `post` | when the build ends |
+| `scripts/keep-awake.ps1` (PS) | holds a "system required" power request so Windows doesn't idle-sleep or hibernate (no settings changed) | when `BUILD_RESULT.txt` is written, or after 30 h |
+
+When the build ends, `post-build.sh`:
+- writes **`C:\mona_work\out\BUILD_RESULT.txt`** (SUCCESS or FAILED, with the errors);
+- on success, copies the images, zip and `SHA256SUMS.txt` to `C:\mona_work\out`;
+- stops the keepalive.
+
+Check that file instead of watching the log.
+
+Limits:
+- Lid close and a flat battery still sleep the laptop, so keep it **plugged in with the lid open**.
+- Closing the Claude app, logging out or hitting a usage limit doesn't stop anything above.
+- A reboot, a Windows update restart or `wsl --shutdown` does.
+
+```powershell
+# PS: start/verify both Windows-side helpers (idempotent)
+powershell -ExecutionPolicy Bypass -File .\scripts\wsl-keepalive.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\keep-awake.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\keep-awake.ps1 -Status
+```
+
+---
+
 ## Phase 1: finish the build (≈ 12–20 h, mostly unattended)
 
 | # | Where | Command | Time |
@@ -24,7 +55,7 @@ $env:Path = "C:\mona_work\platform-tools;$env:Path"
 | 1.4 | — | Stage 1, soong analysis: RAM full + heavy swap is normal here. | **≈ 3 h** |
 | 1.5 | — | Stage 2, Kati (`Running Kati`) | 30–60 min |
 | 1.6 | — | Stage 3, compile (`[ 12% 3456/28000 ]` …), `-j4` | **8–16 h** |
-| 1.7 | WSL | Done when the log ends with `BUILD-EXIT=0`: `grep BUILD-EXIT ~/build.log \| tail -1` | — |
+| 1.7 | PS | Done when `C:\mona_work\out\BUILD_RESULT.txt` exists: `Get-Content C:\mona_work\out\BUILD_RESULT.txt`. On SUCCESS, Phase 2 has already been done for you. | — |
 
 **If it fails** (`BUILD-EXIT=1`):
 

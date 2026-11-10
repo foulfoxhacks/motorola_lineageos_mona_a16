@@ -32,6 +32,9 @@ fi
 # strip CRLF in case the repo was checked out on Windows
 runner="$(mktemp --suffix=.sh)"
 tr -d '\r' < "$HERE/run_build.sh" > "$runner"
+post="$(mktemp --suffix=.sh)"
+tr -d '\r' < "$HERE/post-build.sh" > "$post"
+first_line=$(( $(wc -l < "$BUILD_LOG" 2>/dev/null || echo 0) + 1 ))
 
 # run_build.sh tees everything to $BUILD_LOG; the session stays open afterwards so the
 # exit code and last screen remain visible.
@@ -43,6 +46,12 @@ if ! tmux has-session -t build 2>/dev/null; then
     echo "ERROR: the tmux 'build' session did not start. Check: tmux ls; tail ~/build.log" >&2
     exit 1
 fi
+
+# post-build: when this run ends, copy the zip/images to C:\mona_work\out, write
+# BUILD_RESULT.txt and stop the WSL keepalive, with nobody watching
+tmux kill-session -t post 2>/dev/null || true
+tmux new-session -d -s post \
+    "BUILD_LOG='$BUILD_LOG' PS_SCRIPTS='$HERE' bash '$post' $first_line; exec bash"
 tmux list-sessions
 echo
 echo "Build launched (log: $BUILD_LOG). Follow it with:"
