@@ -268,8 +268,18 @@ ccache -M 50G
 mka bacon -j4           # raise -j only once WSL has >= 16 GB (see §1)
 ```
 
-`scripts/run_build.sh` wraps exactly this and tees to `~/build.log`. Soong errors land in
-`out/soong/siso_output`; `scripts/dev/` has the probes used to chase them.
+`scripts/run_build.sh` wraps exactly this and tees to `~/build.log`. **Launch it with `scripts/start-build.sh`**,
+which runs it detached in a `tmux` session. A build started from a terminal or `wsl -e bash -c …` dies with
+SIGHUP when that window closes. On a 10 GB WSL, soong analysis alone takes about 3 hours, and one closed window
+has already thrown away a finished analysis.
+
+```bash
+bash /mnt/c/mona_work/motorola_lineageos_mona_a16/scripts/start-build.sh
+tmux attach -t build        # Ctrl-b d to detach again
+```
+
+Soong errors land in `out/soong/siso_output` and `out/error.log`; `scripts/dev/` has the probes used to
+chase them. A signal or cancellation is recorded in `out/soong.log` (`grep -i signal out/soong.log`).
 
 Outputs in `out/target/product/mona/`:
 

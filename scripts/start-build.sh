@@ -1,20 +1,42 @@
 #!/usr/bin/env bash
-# start-build.sh - Launch mka bacon in a tmux session
-set -e
+# start-build.sh - run scripts/run_build.sh detached in a tmux session.
+#
+#   bash scripts/start-build.sh            # refuses if a "build" session already exists
+#   bash scripts/start-build.sh --force    # kill the existing session first
+#
+# Why tmux: a build started from `wsl -e bash -c ...` (or any terminal) dies with
+# SIGHUP when that window closes. On a 10 GB WSL, soong analysis alone takes ~3 h,
+# and one closed window has already thrown away a finished analysis.
+# Follow it with:
+#   wsl -d lineage-build -u builder -- tmux attach -t build      (Ctrl-b d to detach)
+#   wsl -d lineage-build -u builder -- tail -f ~/build.log
+set -euo pipefail
 
-cd ~/lineage
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BUILD_LOG="${BUILD_LOG:-$HOME/build.log}"
+command -v tmux >/dev/null || { echo "ERROR: tmux missing (sudo apt install tmux)" >&2; exit 1; }
 
-# Kill any existing build session
-tmux kill-session -t build 2>/dev/null || true
+if tmux has-session -t build 2>/dev/null; then
+    if [ "${1:-}" != "--force" ]; then
+        echo "ERROR: a tmux 'build' session already exists. Attach with: tmux attach -t build" >&2
+        echo "       or re-run with --force to kill it (an in-progress build is lost)." >&2
+        exit 1
+    fi
+    tmux kill-session -t build
+fi
 
-# Launch tmux with build command, logging to /tmp/build.log
+# strip CRLF in case the repo was checked out on Windows
+runner="$(mktemp --suffix=.sh)"
+tr -d '\r' < "$HERE/run_build.sh" > "$runner"
+
+# run_build.sh tees everything to $BUILD_LOG; the session stays open afterwards so the
+# exit code and last screen remain visible.
 tmux new-session -d -s build -x 220 -y 50 \
-  'cd ~/lineage && source build/envsetup.sh && breakfast mona && export USE_CCACHE=1 && export CCACHE_EXEC=/usr/bin/ccache && ccache -M 50G && mka bacon -j8 2>&1 | tee /tmp/build.log; echo "EXIT_CODE=$?" >> /tmp/build.log'
+    "BUILD_LOG='$BUILD_LOG' bash '$runner'; echo BUILD-EXIT=\$? | tee -a '$BUILD_LOG'; exec bash"
 
 sleep 2
-echo "=== tmux sessions ==="
 tmux list-sessions
-echo ""
-echo "Build launched. Monitor with:"
-echo "  wsl -d lineage-build -u builder -- tail -f /tmp/build.log"
+echo
+echo "Build launched (log: $BUILD_LOG). Follow it with:"
 echo "  wsl -d lineage-build -u builder -- tmux attach -t build"
+echo "  wsl -d lineage-build -u builder -- tail -f $BUILD_LOG"

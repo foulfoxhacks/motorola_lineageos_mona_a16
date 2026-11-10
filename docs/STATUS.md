@@ -16,7 +16,7 @@ package, or GitHub. None of it is copied from older notes.
 | Tree adaptations for W1VAS36 firmware | ✅ done; exported to `patches/` |
 | Blob extraction (`vendor/motorola/{mona,sm6475-common}`) | ✅ complete: 3550 + 819 files, 0 listed entries missing |
 | `breakfast mona` (lunch `lineage_mona-cp2a-userdebug`, PLATFORM_VERSION 17, `CP2A.260605.016`) | ✅ product config resolves |
-| Soong analysis | ✅ B1–B4 fixed (`patches/*/0002-*`, blobs re-extracted 2026-11-10). The run is past the AIDL checks, but analysis is **memory-bound** on this host (see E2) |
+| Soong analysis | ✅ **passes with no errors** (2026-11-10, 2 h 53 m on a 10 GB WSL). It wrote `make_vars`/`late`/`installs-lineage_mona.mk`, then was killed by SIGHUP from a closed terminal while writing the ninja file. Re-running detached in tmux (`scripts/start-build.sh`). |
 | Kati / ninja / compile | not reached yet |
 | Boot on hardware | not reached yet |
 
@@ -52,6 +52,7 @@ VINTF and sepolicy stages have not run yet.
 | E1 | `device/generic/car` was never fully checked out: a stale `index.lock` from the interrupted sync, and every file staged as deleted. That caused `VehicleEmulator` undefined, which was worked around by gutting an SDV `Android.bp`. | ✅ fixed: lock removed, `git reset --hard HEAD` (331 files, clean), SDV hack reverted. |
 | E2 | Memory. The host has 15.8 GB, WSL gets 10 GB + 40 GB swap. Once past the AIDL errors, `soong_build` uses **all 9.7 GB of RAM plus 14+ GB of swap**, with constant memory stalls. Analysis still progresses, but slowly. | ⚠️ open. Options: raise `.wslconfig` `memory=` to ~12–13 GB (leave Windows ~3 GB), close other apps during analysis, or build on a machine with ≥ 32 GB. |
 | E3 | Stray, truncated `~/lineage/run_build.sh` at the tree root | ✅ removed; use `scripts/run_build.sh` |
+| E4 | Builds launched from a terminal die with SIGHUP when it closes (lost a completed 3 h analysis on 2026-11-10) | ✅ `scripts/start-build.sh` now runs `run_build.sh` detached in tmux and refuses to kill a running session without `--force` |
 
 ## 4. Next steps
 
