@@ -53,6 +53,7 @@ VINTF and sepolicy stages have not run yet.
 | E2 | Memory. The host has 15.8 GB, WSL gets 10 GB + 40 GB swap. Once past the AIDL errors, `soong_build` uses **all 9.7 GB of RAM plus 14+ GB of swap**, with constant memory stalls. Analysis still progresses, but slowly. | ⚠️ open. Options: raise `.wslconfig` `memory=` to ~12–13 GB (leave Windows ~3 GB), close other apps during analysis, or build on a machine with ≥ 32 GB. |
 | E3 | Stray, truncated `~/lineage/run_build.sh` at the tree root | ✅ removed; use `scripts/run_build.sh` |
 | E4 | Builds launched from a terminal die with SIGHUP when it closes (lost a completed 3 h analysis on 2026-11-10) | ✅ `scripts/start-build.sh` now runs `run_build.sh` detached in tmux and refuses to kill a running session without `--force` |
+| E6 | After an interrupted analysis, a 0-byte `out/soong/build.lineage_mona.ninja` makes `soong_ui` panic in dumpvars. lunch then fails, and breakfast falls back to roomservice and a repo sync. | ✅ `run_build.sh` removes a 0-byte `build.*.ninja` before starting. The patched trees survived the roomservice sync (`apply-patches.sh` confirms) |
 | E5 | WSL 2.7.11 terminates the distro, tmux included, once no `wsl.exe` client is connected | ✅ `scripts/wsl-keepalive.ps1` holds one hidden client (`sleep infinity`), started via WMI so it survives the terminal; `-Stop` when done |
 
 ## 4. Next steps
