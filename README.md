@@ -121,7 +121,8 @@ extract them from your own copy of the stock firmware.
     ├── lineage-sync.sh, sync-start.sh, sync-watch.sh, sync-status.ps1   sync + progress/ETA
     ├── apply-patches.sh       apply patches/ to the tree (idempotent)
     ├── extract-blobs.sh, fix-extract-tools.sh   blob extraction from stock firmware
-    ├── run_build.sh, start-build.sh             build launchers
+    ├── run_build.sh, start-build.sh             build launchers (start-build = detached tmux)
+    ├── wsl-keepalive.ps1      keep the WSL distro alive during long builds (tmux alone dies with it)
     ├── fix-tree-issues.sh, trim-missing-blobs.sh, fix-vendor-deps.sh,
     │   fix_goodix.py, fix_remaining_aidls.py, fix_qcril_sql.py,
     │   add_missing_entries.py, append_blobs.py, append_final_blobs.py

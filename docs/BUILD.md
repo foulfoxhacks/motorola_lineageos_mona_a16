@@ -273,10 +273,20 @@ which runs it detached in a `tmux` session. A build started from a terminal or `
 SIGHUP when that window closes. On a 10 GB WSL, soong analysis alone takes about 3 hours, and one closed window
 has already thrown away a finished analysis.
 
+tmux alone is **not enough on WSL**: WSL terminates the whole distro shortly after the last `wsl.exe`
+client disconnects, which kills tmux too (verified on WSL 2.7.11). Start a hidden keepalive client on
+the Windows side first:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\wsl-keepalive.ps1          # once; idempotent
+```
+
 ```bash
 bash /mnt/c/mona_work/motorola_lineageos_mona_a16/scripts/start-build.sh
 tmux attach -t build        # Ctrl-b d to detach again
 ```
+
+When the build is done: `.\scripts\wsl-keepalive.ps1 -Stop` (the distro then shuts down normally).
 
 Soong errors land in `out/soong/siso_output` and `out/error.log`; `scripts/dev/` has the probes used to
 chase them. A signal or cancellation is recorded in `out/soong.log` (`grep -i signal out/soong.log`).
