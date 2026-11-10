@@ -17,8 +17,8 @@ package, or GitHub. None of it is copied from older notes.
 | Blob extraction (`vendor/motorola/{mona,sm6475-common}`) | ✅ complete: 3550 + 819 files, 0 listed entries missing |
 | `breakfast mona` (lunch `lineage_mona-cp2a-userdebug`, PLATFORM_VERSION 17, `CP2A.260605.016`) | ✅ product config resolves |
 | Soong analysis | ✅ **passes with no errors** (2026-11-10, 2 h 53 m on a 10 GB WSL). It wrote `make_vars`/`late`/`installs-lineage_mona.mk`, then was killed by SIGHUP from a closed terminal while writing the ninja file. Re-running detached in tmux (`scripts/start-build.sh`). |
-| Kati | ❌→🔧 2026-11-10 08:38: `PRODUCT_PACKAGES` named 4 non-existent modules (legacy HIDL audio HAL + `MotoNrEnabler`). Fixed by switching to the AIDL audio HAL (`patches/*/0003`). Rebuild started 09:56. |
-| ninja / compile | not reached yet |
+| Kati | ✅ passes (2026-11-10 13:45), including packaging rules and the license/SBOM check. It had failed at 08:38 on 4 non-existent `PRODUCT_PACKAGES` (legacy HIDL audio HAL + `MotoNrEnabler`), fixed by switching to the AIDL audio HAL (`patches/*/0003`). |
+| ninja / compile | ⏳ running since 13:45 (`-j4`, expected 8–16 h) |
 | Boot on hardware | not reached yet |
 
 ### Why AIDL conflicts are the main blocker

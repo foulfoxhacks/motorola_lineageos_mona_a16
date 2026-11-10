@@ -21,7 +21,8 @@ at a time. See [`docs/HARDENING.md`](docs/HARDENING.md).
 | Tree adapted to stock firmware `W1VAS36.62-22-16-1-18` | ✅ [`patches/`](patches/) |
 | Vendor blobs extracted from stock firmware | ✅ 4,369 files, 0 missing |
 | Soong analysis | ✅ AIDL conflicts fixed ([`patches/*/0002`](patches/)); memory-bound on a 10 GB WSL, see [`docs/STATUS.md`](docs/STATUS.md) |
-| Compile → first boot → smoke test | ⏳ |
+| Kati (product makefiles) | ✅ after switching audio to the AIDL HAL ([`patches/*/0003`](patches/)) |
+| Compile → first boot → smoke test | ⏳ compile running |
 | Hardening Phase 1 (kernel cmdline) | ⏳ after a stable boot |
 
 Detail, blockers and the decision log: [`docs/STATUS.md`](docs/STATUS.md).
