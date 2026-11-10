@@ -45,6 +45,14 @@ A scan of all 4,400 extracted ELF blobs found no other blob linking two versions
 Further conflicts can still come from AOSP modules mixing with blobs, and the Kati, `check_elf_files`,
 VINTF and sepolicy stages have not run yet.
 
+### Open risk: no `init_boot` image
+
+The tree's `AB_OTA_PARTITIONS` (sm6475-common) has `boot`, `dtbo`, `recovery`, `vendor_boot`, `vbmeta*` and the
+super partitions, but **no `init_boot`**, and there is no `BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE`. The device ships
+its generic ramdisk in `init_boot`, so LineageOS will boot with whatever `init_boot` is already on the phone. Until
+that is resolved, the install uses **stock** `init_boot` on both slots (`RUNBOOK.md` step 3.2), never a
+Magisk-patched one. If first boot fails in first-stage init, building `init_boot` is the first thing to try.
+
 ## 3. Environment issues
 
 | # | Issue | State |

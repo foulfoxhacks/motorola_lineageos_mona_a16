@@ -95,6 +95,7 @@ extract them from your own copy of the stock firmware.
 .
 ├── README.md
 ├── docs/
+│   ├── RUNBOOK.md         step-by-step commands + timings: build → install → first boot
 │   ├── STATUS.md          current state, blockers, decision log
 │   ├── BUILD.md           from-source lineage-24.0 build, flashing, smoke test
 │   ├── FIRMWARE.md        stock W1VAS36 firmware: partitions, boot chain, hardware
