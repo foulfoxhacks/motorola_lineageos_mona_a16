@@ -29,10 +29,19 @@ $env:Path = "C:\mona_work\platform-tools;$env:Path"
 **If it fails** (`BUILD-EXIT=1`):
 
 ```bash
-# WSL: show the error, then send it to Claude
-grep -E "^error:|FAILED:" ~/build.log | tail -20
+# WSL: show the errors of the LATEST run only (~/build.log keeps every run), then send them to Claude
+tac ~/build.log | sed '/Build started at/q' | tac | grep -E '^error:|FAILED:'
 cat ~/lineage/out/error.log | head -60
 ```
+
+From PowerShell, the same check is:
+
+```powershell
+wsl -d lineage-build -u builder -- bash -c "tac ~/build.log | sed '/Build started at/q' | tac | grep -E '^error:|FAILED:'"
+```
+
+No output means no errors in the current run. A plain `grep ~/build.log` also shows errors from old,
+already-fixed runs.
 
 After a fix, restart from step 1.2 with `start-build.sh --force`. Don't run `wsl --shutdown` while a build
 is running.
