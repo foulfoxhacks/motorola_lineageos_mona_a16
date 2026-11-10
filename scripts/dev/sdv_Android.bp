@@ -1,0 +1,21 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+prebuilt_etc {
+    name: "Prebuilt_VhalProxySampleConfig_JSON",
+    filename_from_src: true,
+    src: "VhalProxySampleConfig.json",
+    sub_dir: "automotive/sdv_vhal_proxy_config/sample",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "vhal_service_acl_policy",
+    filename_from_src: true,
+    src: "VehicleService.textproto",
+    sub_dir: "sdv_authz_acls/com.android.sdv.sample.vhal_proxy_emulated",
+    vendor: true,
+}
+
+// Disabled in phone LineageOS build: VehicleEmulator is an automotive test emulator dependency not present in tree.

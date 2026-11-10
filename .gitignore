@@ -1,0 +1,71 @@
+# ---- Android source / build outputs ----
+.repo/
+out/
+vendor/motorola/
+
+# ---- Images, archives, binaries (never commit; GitHub caps files at 100 MB anyway) ----
+*.img
+*.img.*
+*.zip
+*.7z
+*.xz
+*.lz4
+*.gz
+*.tar
+*.tar.*
+*.apk
+*.bin
+*.mbn
+*.elf
+*.exe
+*.dll
+*.vhdx
+*sparsechunk*
+
+# ---- Local staging folders (GSIs, firmware, tools) ----
+/gsi/
+/gsi-aosp16/
+/firmware/
+/platform-tools/
+build.prop
+
+# ---- Device-unique data and diagnostic dumps (IMEI, serials, ICCID) ----
+/dumps/
+*.qcn
+*.xqcn
+/persist*
+/modemst*
+/fsg*
+/efs*
+getvar*.txt
+logcat*.txt
+dmesg*.txt
+bugreport*
+tombstone*
+
+# ---- Signing keys ----
+.android-certs/
+*.pk8
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+.env
+.env.*
+
+# ---- Scratch / tooling ----
+tmp_*
+*.orig
+*.rej
+.ccache/
+.cache/
+__pycache__/
+*.pyc
+*.log
+*.swp
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

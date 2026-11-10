@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Local manifest for Motorola Moto G Stylus 5G (2025) - mona / XT2517-1
+  Branch: lineage-24.0 (Android 17 system on stock W1VAS36 vendor blobs;
+          the vendor partition is an Android 15 / 202404 freeze)
+
+  Drop into:  .repo/local_manifests/mona.xml
+  Then run:   scripts/apply-patches.sh   (tree adaptations, see patches/README.md)
+
+  Tracks branch heads, not pinned commits. The base commits the patches were
+  made against are listed in patches/README.md.
+-->
+<manifest>
+  <project name="LineageOS/android_device_motorola_mona"
+           path="device/motorola/mona"
+           remote="github" revision="lineage-24.0" />
+
+  <project name="LineageOS/android_device_motorola_sm6475-common"
+           path="device/motorola/sm6475-common"
+           remote="github" revision="lineage-24.0" />
+
+  <project name="LineageOS/android_kernel_motorola_sm6475"
+           path="kernel/motorola/sm6475"
+           remote="github" revision="lineage-24.0" />
+
+  <project name="LineageOS/android_kernel_motorola_sm6475-modules"
+           path="kernel/motorola/sm6475-modules"
+           remote="github" revision="lineage-24.0" />
+
+  <project name="LineageOS/android_kernel_motorola_sm6475-devicetrees"
+           path="kernel/motorola/sm6475-devicetrees"
+           remote="github" revision="lineage-24.0" />
+
+  <project name="LineageOS/android_hardware_motorola"
+           path="hardware/motorola"
+           remote="github" revision="lineage-24.0" />
+</manifest>
