@@ -20,7 +20,7 @@ at a time. See [`docs/HARDENING.md`](docs/HARDENING.md).
 | Source sync (`lineage-24.0`, Android 17) | ✅ |
 | Tree adapted to stock firmware `W1VAS36.62-22-16-1-18` | ✅ [`patches/`](patches/) |
 | Vendor blobs extracted from stock firmware | ✅ 4,369 files, 0 missing |
-| Soong analysis | ❌ 4 AIDL version conflicts. Fixes identified, see [`docs/STATUS.md`](docs/STATUS.md) §2 |
+| Soong analysis | ✅ AIDL conflicts fixed ([`patches/*/0002`](patches/)); memory-bound on a 10 GB WSL, see [`docs/STATUS.md`](docs/STATUS.md) |
 | Compile → first boot → smoke test | ⏳ |
 | Hardening Phase 1 (kernel cmdline) | ⏳ after a stable boot |
 

@@ -16,7 +16,7 @@ package, or GitHub. None of it is copied from older notes.
 | Tree adaptations for W1VAS36 firmware | ✅ done; exported to `patches/` |
 | Blob extraction (`vendor/motorola/{mona,sm6475-common}`) | ✅ complete: 3550 + 819 files, 0 listed entries missing |
 | `breakfast mona` (lunch `lineage_mona-cp2a-userdebug`, PLATFORM_VERSION 17, `CP2A.260605.016`) | ✅ product config resolves |
-| Soong analysis | ❌ **fails: 4 AIDL version conflicts (B1–B4)** |
+| Soong analysis | ✅ B1–B4 fixed (`patches/*/0002-*`, blobs re-extracted 2026-11-10). The run is past the AIDL checks, but analysis is **memory-bound** on this host (see E2) |
 | Kati / ninja / compile | not reached yet |
 | Boot on hardware | not reached yet |
 
@@ -28,34 +28,36 @@ links newer ones. Soong refuses any module that ends up depending on two version
 Each conflict is fixed with an `extract-files.py` blob fixup (`replace_needed` / `remove_needed`), or by
 building the AOSP module instead of the blob.
 
-## 2. Current blockers
+## 2. AIDL version conflicts: fixed (2026-11-10)
 
-All four come from the last build (2026-11-09 13:34), and all are soong `depends on multiple versions
-of the same aidl_interface` errors. There are no undefined-module errors left.
+The 2026-11-09 build stopped on four soong `depends on multiple versions of the same aidl_interface`
+errors. All four are fixed in `patches/device/motorola/*/0002-*.patch`. The blobs were re-extracted and each fix
+was verified in the resulting ELF `NEEDED` entries:
 
-| # | Module | Conflict | Proposed fix |
+| # | Module | Conflict | Fix (verified) |
 |---|---|---|---|
-| B1 | `com.qti.chi.override` (mona) | `graphics.allocator` V1 + V2 (blob NEEDs both) | blob fixup on `vendor/lib64/hw/com.qti.chi.override.so`: `.remove_needed('android.hardware.graphics.allocator-V1-ndk.so')`. Apply the same to `vendor/lib64/camera/components/com.qti.node.dewarp.so`, which will fail next. |
-| B2 | `libcamera2ndk_vendor` (mona) | `cameraservice.device/service` V2 (blob) vs V3 (AOSP) | Drop the blob from `proprietary-files.txt` so the AOSP module is built, **or** `replace_needed` V2 → V3 |
-| B3 | `libqcodec2_core` (sm6475-common) | `graphics.common` V5 (blob) vs V7 (via `libgralloctypes`) | `blob_fixup().replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so')` |
-| B4 | `libwfdservice` (sm6475-common) | `audio.common.types-cpp` V4 vs V5 | A fixup already exists but is **skipped**: the WFD block (26 entries) is pinned to upstream SHA1s that do not match W1VAS36, so extract-utils treats the files as mismatched and skips fixups. Remove the `\|sha1\|sha1` pins (or extract with `--kang`), then re-extract. |
+| B1 | `com.qti.chi.override` + `com.qti.node.dewarp` (mona) | `graphics.allocator` V1 + V2 in one blob | `remove_needed` V1 → both now NEED only V2 |
+| B2 | `libcamera2ndk_vendor` (mona) | `cameraservice.device/service` V2 (blob) vs V3 (AOSP) | blob dropped; AOSP module built via `PRODUCT_PACKAGES` (no other blob links it) |
+| B3 | `libqcodec2_core` (sm6475-common) | `graphics.common` V5 vs V7 (via `libgralloctypes`) | `replace_needed` V5 → V7 |
+| B4 | `libwfdservice` (sm6475-common) | `audio.common.types-cpp` V4 vs V5 | WFD block unpinned. The pins mismatched W1VAS36, which made extract-utils **skip** the existing V4→V5 fixup. Now NEEDs V5; the `WfdCommon.jar` apktool patch also applies. |
 
-After these, re-extract and rebuild. Expect more of the same kind, then the Kati, `check_elf_files`,
-VINTF and sepolicy stages, none of which have run yet.
+A scan of all 4,400 extracted ELF blobs found no other blob linking two versions of one AIDL interface.
+Further conflicts can still come from AOSP modules mixing with blobs, and the Kati, `check_elf_files`,
+VINTF and sepolicy stages have not run yet.
 
 ## 3. Environment issues
 
-| # | Issue | Fix |
+| # | Issue | State |
 |---|---|---|
-| E1 | `device/generic/car` never finished checking out (no index, 253/331 files missing) → VehicleEmulator undefined. It was worked around by hand-gutting `system/software_defined_vehicle/samples/vhal_proxy/sdv_emulated_vhal/Android.bp`. | `repo sync -l device/generic/car` (or `git -C device/generic/car checkout -f`), then revert the hack: `git -C system/software_defined_vehicle/samples checkout .` That hack is **not** in `patches/` on purpose. |
-| E2 | Memory: WSL has 9.7 GB; `soong_build` peaked at 9.5 GB, with memory-stall warnings | Raise `.wslconfig` to `memory=16GB` (or more) and `swap=32GB`; keep `-j4` until then |
-| E3 | `~/lineage/run_build.sh` is a stray, truncated copy at the tree root | delete it; use `scripts/run_build.sh` |
+| E1 | `device/generic/car` was never fully checked out: a stale `index.lock` from the interrupted sync, and every file staged as deleted. That caused `VehicleEmulator` undefined, which was worked around by gutting an SDV `Android.bp`. | ✅ fixed: lock removed, `git reset --hard HEAD` (331 files, clean), SDV hack reverted. |
+| E2 | Memory. The host has 15.8 GB, WSL gets 10 GB + 40 GB swap. Once past the AIDL errors, `soong_build` uses **all 9.7 GB of RAM plus 14+ GB of swap**, with constant memory stalls. Analysis still progresses, but slowly. | ⚠️ open. Options: raise `.wslconfig` `memory=` to ~12–13 GB (leave Windows ~3 GB), close other apps during analysis, or build on a machine with ≥ 32 GB. |
+| E3 | Stray, truncated `~/lineage/run_build.sh` at the tree root | ✅ removed; use `scripts/run_build.sh` |
 
 ## 4. Next steps
 
-1. Fix E1 and E2.
-2. Fix B1–B4 in `extract-files.py` / `proprietary-files.txt`. Re-extract with `scripts/extract-blobs.sh`.
-3. `mka bacon` until soong, Kati and ninja pass. Export each fix as a patch.
+1. ~~Fix E1~~ ✅. ~~Fix B1–B4 and re-extract~~ ✅.
+2. Get soong analysis through on this host (E2), then Kati and ninja.
+3. `mka bacon` until it produces a zip. Export each fix as a numbered patch.
 4. Fork `android_device_motorola_mona` and `sm6475-common` under `foulfoxhacks`, move `patches/` into
    real commits, and point `local_manifests/mona.xml` at the forks.
 5. First boot. Have `RESTORE-STOCK.md` open.
@@ -108,3 +110,5 @@ and PIN scrambling. That is the long-term goal of this repo, staged in `HARDENIN
 | 2026-11-08 | **Lane 1 (GSI) closed; Lane 2 (source) is the project** | GSI cannot provide working eSIM |
 | 2026-11-09 | Adapt tree to W1VAS36 instead of hunting W1UANS36H firmware | The tree pins `W1UANS36H.29-25-2-6`; the W1VAS36 firmware is what's available. Missing blobs trimmed, new ones added |
 | 2026-11-10 | Publish tree changes as `patches/` now, forks later | They existed only as uncommitted edits in WSL; one `repo sync --force-sync` could lose them |
+| 2026-11-10 | `libcamera2ndk_vendor`: build AOSP's instead of patching the blob | `replace_needed` V2→V3 on a prebuilt risks parcelable ABI drift; the NDK camera C API is stable, so the AOSP build is the safer swap |
+| 2026-11-10 | Unpin the WFD blobs rather than kang | The pins describe another firmware; with the pins removed, the existing fixups run on the stock W1VAS36 files |

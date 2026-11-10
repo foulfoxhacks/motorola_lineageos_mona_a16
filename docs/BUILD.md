@@ -16,8 +16,10 @@ is either an A17 firmware release from Motorola, or backporting the device tree 
 
 - WSL2 Ubuntu 24.04, **ext4** filesystem (never `/mnt/c`).
 - ~400 GB free: source ~150 GB, `out/` ~150 GB, ccache ~50 GB.
-- **WSL memory ≥ 16 GB plus ≥ 32 GB swap.** Measured: `soong_build` alone peaked at **9.5 GB** during
-  analysis. With a 10 GB WSL limit it stalls. Compile jobs need roughly 1 GB each on top of that.
+- **WSL memory: as much as the host can spare, plus ≥ 32 GB swap.** Measured on lineage-24.0: once
+  the blob errors are gone, `soong_build` analysis uses **~24 GB** (all 9.7 GB of RAM plus 14+ GB of swap on a
+  10 GB WSL). It keeps progressing, but thrashes. 32 GB of host RAM is the comfortable minimum. Compile jobs need roughly
+  1 GB each on top of that.
 - `nproc` ≥ 8.
 
 > **Windows hosts with a small system drive:** `scripts/setup-build-wsl.ps1` exports the existing

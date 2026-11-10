@@ -1,0 +1,41 @@
+diff --git a/device.mk b/device.mk
+index f1b687b..579479c 100644
+--- a/device.mk
++++ b/device.mk
+@@ -89,3 +89,7 @@ ODM_MANIFEST_N_FILES := \
+ 
+ # Inherit from vendor blobs
+ $(call inherit-product, vendor/motorola/mona/mona-vendor.mk)
++
++# Camera NDK (vendor): build AOSP's (cameraservice V3) instead of the stock A15 blob (V2)
++PRODUCT_PACKAGES += \
++    libcamera2ndk_vendor
+diff --git a/extract-files.py b/extract-files.py
+index e4aec72..cdfefd2 100755
+--- a/extract-files.py
++++ b/extract-files.py
+@@ -62,6 +62,12 @@ def blob_fixup_graphic_buffer_size(
+ 
+ 
+ blob_fixups: blob_fixups_user_type = {
++    (
++        'vendor/lib64/camera/components/com.qti.node.dewarp.so',
++        'vendor/lib64/hw/com.qti.chi.override.so',
++    ): blob_fixup().remove_needed(
++        'android.hardware.graphics.allocator-V1-ndk.so'
++    ),
+     (
+         'vendor/lib64/libcamximageformatutils.so',
+         'vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so',
+diff --git a/proprietary-files.txt b/proprietary-files.txt
+index b7558f6..cff50aa 100644
+--- a/proprietary-files.txt
++++ b/proprietary-files.txt
+@@ -40,7 +40,6 @@ vendor/lib64/libarcsoft_qnnhtp.so
+ vendor/lib64/libbitmlengine.so
+ vendor/lib64/libbitmlenginev2.so
+ vendor/lib64/libcalculator.so
+-vendor/lib64/libcamera2ndk_vendor.so
+ vendor/lib64/libcamera_nn_stub.so
+ vendor/lib64/libcamerapostproc.so
+ vendor/lib64/libchilog.so
