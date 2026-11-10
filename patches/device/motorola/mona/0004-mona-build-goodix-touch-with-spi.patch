@@ -1,0 +1,13 @@
+diff --git a/BoardConfig.mk b/BoardConfig.mk
+index 692a487..6ed8969 100644
+--- a/BoardConfig.mk
++++ b/BoardConfig.mk
+@@ -48,3 +48,8 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := 20
+ 
+ # inherit from the proprietary version
+ include vendor/motorola/mona/BoardConfigVendor.mk
++
++# Touch: mona's Goodix GT9916 sits on SPI (stock dtbo). goodix_berlin_mmi only compiles its
++# SPI bus code with this flag; Motorola passes it from their device makefiles via the driver's
++# Android.mk, which the LineageOS kernel build does not read.
++TARGET_KERNEL_ADDITIONAL_FLAGS += CONFIG_TOUCHSCREEN_GOODIX_BRL_SPI=y

@@ -34,4 +34,15 @@
   <project name="LineageOS/android_hardware_motorola"
            path="hardware/motorola"
            remote="github" revision="lineage-24.0" />
+
+  <!--
+    Motorola MMI kernel drivers (touch, fingerprint, stylus, charger, sensors, NFC, ...).
+    sm6475-common lists them under kernel/motorola/sm6475-modules/motorola/drivers/...,
+    but LineageOS's sm6475-modules repo has no motorola/ directory. This is Motorola's
+    own GPL release for exactly the W1VAS36 firmware/kernel drop.
+  -->
+  <project name="MotorolaMobilityLLC/motorola-kernel-modules"
+           path="kernel/motorola/sm6475-modules/motorola"
+           remote="github" revision="refs/tags/MMI-W1VAS36.62-22-16-16"
+           clone-depth="1" />
 </manifest>

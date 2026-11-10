@@ -9,8 +9,8 @@ upstream base commit below and to match the working tree it was exported from.
 
 | Project | Upstream base commit | Patch |
 |---|---|---|
-| `device/motorola/mona` | `b41432100a054e1e47cb05e874e5154faa1c47ac` "mona: Inherit from sm6475-common" | `0001-mona-adapt-to-W1VAS36-firmware.patch`, `0002-mona-resolve-aidl-version-conflicts.patch`, `0003-mona-extract-stock-audio-module-config.patch` |
-| `device/motorola/sm6475-common` | `a0fe3968b045102f9892c27e5ecc611972eab49f` "sm7435-common: Rebrand to sm6475-common" | `0001-sm6475-common-adapt-to-W1VAS36-firmware.patch`, `0002-sm6475-common-resolve-aidl-version-conflicts.patch`, `0003-sm6475-common-switch-to-aidl-audio-hal.patch` |
+| `device/motorola/mona` | `b41432100a054e1e47cb05e874e5154faa1c47ac` "mona: Inherit from sm6475-common" | `0001` … `0004` (adapt to W1VAS36, AIDL conflicts, stock audio module config, SPI touch flag) |
+| `device/motorola/sm6475-common` | `a0fe3968b045102f9892c27e5ecc611972eab49f` "sm7435-common: Rebrand to sm6475-common" | `0001` … `0004` (adapt to W1VAS36, AIDL conflicts, AIDL audio HAL, kernel 6.6 config + modules) |
 | `kernel/motorola/sm6475-modules` | `47a594be4cde8ec4685416e8b3d58c36939c3945` | `0001-modules-fix-soong-namespace-import.patch` |
 
 ## Apply
@@ -77,6 +77,14 @@ Motorola's stock vendor also runs the AIDL stack: `audiohalservice.qti`, `audio.
   `IAGM`/`IPAL` AIDL services (`hal_audio_service`). QCOM `sepolicy_vndr/sm8450` predates the AIDL HAL;
   these lines are copied from `sepolicy_vndr/sm8750`.
 - `mona/proprietary-files.txt`: extracts Motorola's tuned `vendor/etc/audio/audio_module_config_primary.xml`.
+
+**`0004`: kernel 6.6 build inputs.**
+- `sm6475-common/BoardConfigCommon.mk`:
+  - Uses `gki_defconfig` + `vendor/parrot_perf.config`. The 5.10-era `vendor/parrot_GKI.config` and Motorola's `ext_config` fragments do not exist in the LineageOS 6.6 kernel; those fragments only set symbols it doesn't define.
+  - Drops `cvp-kernel`/`eva-kernel`, which are neither in `sm6475-modules` nor on stock.
+- `mona/BoardConfig.mk`: `TARGET_KERNEL_ADDITIONAL_FLAGS += CONFIG_TOUCHSCREEN_GOODIX_BRL_SPI=y`. mona's touchscreen is on SPI, and the driver compiles SPI support only with this flag.
+- Requires the Motorola MMI driver repo from `local_manifests/mona.xml`
+  (`MotorolaMobilityLLC/motorola-kernel-modules` @ `MMI-W1VAS36.62-22-16-16`). Run `repo sync` before building.
 
 **`kernel/motorola/sm6475-modules`**
 - `Android.bp`: the soong namespace import pointed at `kernel/qcom/sm8450`, which does not exist. It now
