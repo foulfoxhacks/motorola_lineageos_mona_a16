@@ -9,8 +9,8 @@ upstream base commit below and to match the working tree it was exported from.
 
 | Project | Upstream base commit | Patch |
 |---|---|---|
-| `device/motorola/mona` | `b41432100a054e1e47cb05e874e5154faa1c47ac` "mona: Inherit from sm6475-common" | `0001-mona-adapt-to-W1VAS36-firmware.patch`, `0002-mona-resolve-aidl-version-conflicts.patch` |
-| `device/motorola/sm6475-common` | `a0fe3968b045102f9892c27e5ecc611972eab49f` "sm7435-common: Rebrand to sm6475-common" | `0001-sm6475-common-adapt-to-W1VAS36-firmware.patch`, `0002-sm6475-common-resolve-aidl-version-conflicts.patch` |
+| `device/motorola/mona` | `b41432100a054e1e47cb05e874e5154faa1c47ac` "mona: Inherit from sm6475-common" | `0001-mona-adapt-to-W1VAS36-firmware.patch`, `0002-mona-resolve-aidl-version-conflicts.patch`, `0003-mona-extract-stock-audio-module-config.patch` |
+| `device/motorola/sm6475-common` | `a0fe3968b045102f9892c27e5ecc611972eab49f` "sm7435-common: Rebrand to sm6475-common" | `0001-sm6475-common-adapt-to-W1VAS36-firmware.patch`, `0002-sm6475-common-resolve-aidl-version-conflicts.patch`, `0003-sm6475-common-switch-to-aidl-audio-hal.patch` |
 | `kernel/motorola/sm6475-modules` | `47a594be4cde8ec4685416e8b3d58c36939c3945` | `0001-modules-fix-soong-namespace-import.patch` |
 
 ## Apply
@@ -58,6 +58,25 @@ on two versions of one interface:
 | `libcamera2ndk_vendor` (mona) | stock blob uses `cameraservice.{device,service}` V2, AOSP uses V3 | drop the blob, build AOSP's module (`PRODUCT_PACKAGES`). No other blob links it. |
 | `libqcodec2_core` (sm6475-common) | `graphics.common` V5 vs V7 (via `libcodec2_vndk` → `libgralloctypes`) | `replace_needed` V5 → V7 |
 | `libwfdservice` (sm6475-common) | `audio.common.types-cpp` V4 vs V5 | The V4→V5 fixup already existed but never ran. The WFD block was pinned to upstream SHA1s, every pin mismatched W1VAS36, and extract-utils skips fixups on mismatched pins. Unpinned the 26 WFD entries. |
+
+**`0003`: switch audio to the QTI AIDL HAL (fixes the Kati "non-existent modules in PRODUCT_PACKAGES" failure).**
+With kernel 6.6, Lineage selects the `hardware/qcom-caf/sm8450-6.6` variant for `parrot`
+(`hardware/qcom-caf/common/qcom_defs.mk`). That variant ships the AIDL audio HAL (`audiohalservice.qti`).
+`sm6475-common` was rebranded from a kernel-5.10 tree and still asked for the legacy HIDL HAL
+(`audio.primary.parrot`, `sound_trigger.primary.parrot`, `AGMIPC@1.0-service`), which only the `sm8450` variant builds.
+Motorola's stock vendor also runs the AIDL stack: `audiohalservice.qti`, `audio.core` V2, `IAGM`/`IPAL`, `soundtrigger3`.
+
+- `sm6475-common/common.mk`:
+  - The audio packages now follow LineageOS `sony/elbe-common` (also `parrot` on `sm8450-6.6`).
+  - `AUDIO_HAL_DIR` → `sm8450-6.6`.
+  - Installs `configs/parrot/vendor_audio_interfaces.xml`, byte-identical to stock.
+  - Drops `MotoNrEnabler`, which W1VAS36 does not have and no module defines.
+- `sm6475-common/vintf/manifest.xml`: the HIDL `audio@7.0`, `audio.effect@7.0`, `AGMIPC@1.0` and `pal@1.0` entries are removed.
+  The AIDL modules install their own VINTF fragments, the same files stock ships.
+- `sm6475-common/sepolicy/vendor`: labels `audiohalservice.qti` (`hal_audio_default_exec`) and the
+  `IAGM`/`IPAL` AIDL services (`hal_audio_service`). QCOM `sepolicy_vndr/sm8450` predates the AIDL HAL;
+  these lines are copied from `sepolicy_vndr/sm8750`.
+- `mona/proprietary-files.txt`: extracts Motorola's tuned `vendor/etc/audio/audio_module_config_primary.xml`.
 
 **`kernel/motorola/sm6475-modules`**
 - `Android.bp`: the soong namespace import pointed at `kernel/qcom/sm8450`, which does not exist. It now

@@ -1,0 +1,143 @@
+diff --git a/common.mk b/common.mk
+index cba7840..6813e8d 100644
+--- a/common.mk
++++ b/common.mk
+@@ -50,33 +50,57 @@ PRODUCT_PACKAGES += \
+ PRODUCT_PACKAGES_DEBUG += \
+     bootctl
+ 
+-# Audio
++# Audio (QTI AIDL audio HAL from hardware/qcom-caf/sm8450-6.6, matching the stock vendor)
+ PRODUCT_PACKAGES += \
+-    android.hardware.audio@7.0-impl \
+-    android.hardware.audio.effect@7.0-impl \
+-    android.hardware.audio.service \
+     android.hardware.bluetooth.audio-impl \
+-    android.hardware.soundtrigger@2.3-impl \
+-    audioadsprpcd \
+     audio.bluetooth.default \
+-    audio.primary.parrot \
+     audio.r_submix.default \
+     audio.usb.default \
++    audioadsprpcd \
++    audiohalservice.qti \
+     lib_bt_aptx \
+     lib_bt_ble \
+     lib_bt_bundle \
+     libagm_compress_plugin \
+     libagm_mixer_plugin \
+     libagm_pcm_plugin \
++    libagmipcservice \
++    libaudio_aidl_conversion_common_ndk \
++    libaudiochargerlistener \
++    libbatterylistener \
+     libfmpal \
++    libhfp_pal \
++    libpalipcservice \
+     libqcompostprocbundle \
+     libqcomvisualizer \
+     libqcomvoiceprocessing \
++    libsndcardparser \
++    libsoundtriggerhal.qti \
+     libvolumelistener \
+-    sound_trigger.primary.parrot \
+-    vendor.qti.hardware.AGMIPC@1.0-service
++    qtiaudiohalvendorextn
++
++PRODUCT_PACKAGES += \
++    libbundleaidl \
++    libdownmixaidl \
++    libdynamicsprocessingaidl \
++    libloudnessenhanceraidl \
++    libreverbaidl \
++    libvisualizeraidl
+ 
+-AUDIO_HAL_DIR := hardware/qcom-caf/sm8450/audio/primary-hal
++PRODUCT_PACKAGES += \
++    android.hardware.audio.common-V1-ndk.vendor \
++    android.hardware.audio.core-V2-ndk.vendor \
++    android.hardware.audio.core.sounddose-V1-ndk.vendor \
++    libalsautilsv2.vendor \
++    libaudioaidlcommon.vendor \
++    libaudioutils_shim \
++    libmediautils_vendor.vendor \
++    libmemunreachable.vendor
++
++AUDIO_HAL_DIR := hardware/qcom-caf/sm8450-6.6/audio/primary-hal
++
++PRODUCT_COPY_FILES += \
++    $(AUDIO_HAL_DIR)/configs/parrot/vendor_audio_interfaces.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/vendor_audio_interfaces.xml
+ 
+ PRODUCT_COPY_FILES += \
+     $(AUDIO_HAL_DIR)/configs/common/codec2/media_codecs_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2_audio.xml \
+@@ -307,7 +331,6 @@ PRODUCT_PACKAGES += \
+     extphonelib.xml \
+     extphonelib_product.xml \
+     MotoEuicc \
+-    MotoNrEnabler \
+     ims-ext-common \
+     ims_ext_common.xml \
+     qti-telephony-hidl-wrapper \
+diff --git a/sepolicy/vendor/file_contexts b/sepolicy/vendor/file_contexts
+index 0892623..1d368fa 100644
+--- a/sepolicy/vendor/file_contexts
++++ b/sepolicy/vendor/file_contexts
+@@ -5,3 +5,6 @@
+ 
+ # Touch
+ /vendor/bin/hw/vendor\.lineage\.touch-service\.moto_sm6475 u:object_r:hal_lineage_touch_default_exec:s0
++
++# Audio (AIDL HAL; QCOM sepolicy_vndr/sm8450 predates it)
++/(vendor|system/vendor)/bin/hw/audiohalservice\.qti   u:object_r:hal_audio_default_exec:s0
+diff --git a/sepolicy/vendor/service_contexts b/sepolicy/vendor/service_contexts
+new file mode 100644
+index 0000000..62b91e1
+--- /dev/null
++++ b/sepolicy/vendor/service_contexts
+@@ -0,0 +1,3 @@
++# Audio (AIDL HAL; QCOM sepolicy_vndr/sm8450 predates it)
++vendor.qti.hardware.agm.IAGM/default    u:object_r:hal_audio_service:s0
++vendor.qti.hardware.pal.IPAL/default    u:object_r:hal_audio_service:s0
+diff --git a/vintf/manifest.xml b/vintf/manifest.xml
+index 2119036..a50ee6c 100644
+--- a/vintf/manifest.xml
++++ b/vintf/manifest.xml
+@@ -1,14 +1,4 @@
+ <manifest version="4.0" type="device" target-level="7">
+-    <hal format="hidl">
+-        <name>android.hardware.audio</name>
+-        <transport>hwbinder</transport>
+-        <fqname>@7.0::IDevicesFactory/default</fqname>
+-    </hal>
+-    <hal format="hidl">
+-        <name>android.hardware.audio.effect</name>
+-        <transport>hwbinder</transport>
+-        <fqname>@7.0::IEffectsFactory/default</fqname>
+-    </hal>
+     <hal format="hidl">
+         <name>android.hardware.biometrics.fingerprint</name>
+         <transport>hwbinder</transport>
+@@ -99,11 +89,6 @@
+         <transport>hwbinder</transport>
+         <fqname>@1.1::IEsePowerManager/default</fqname>
+     </hal>
+-    <hal format="hidl">
+-        <name>vendor.qti.hardware.AGMIPC</name>
+-        <transport>hwbinder</transport>
+-        <fqname>@1.0::IAGM/default</fqname>
+-    </hal>
+     <hal format="hidl">
+         <name>vendor.qti.hardware.alarm</name>
+         <transport>hwbinder</transport>
+@@ -176,11 +161,6 @@
+         <transport>hwbinder</transport>
+         <fqname>@1.0::IMwqemAdapter/MwqemAdapter</fqname>
+     </hal>
+-    <hal format="hidl">
+-        <name>vendor.qti.hardware.pal</name>
+-        <transport>hwbinder</transport>
+-        <fqname>@1.0::IPAL/default</fqname>
+-    </hal>
+     <hal format="hidl">
+         <name>vendor.qti.hardware.qseecom</name>
+         <transport>hwbinder</transport>

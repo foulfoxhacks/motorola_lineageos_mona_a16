@@ -17,7 +17,8 @@ package, or GitHub. None of it is copied from older notes.
 | Blob extraction (`vendor/motorola/{mona,sm6475-common}`) | ✅ complete: 3550 + 819 files, 0 listed entries missing |
 | `breakfast mona` (lunch `lineage_mona-cp2a-userdebug`, PLATFORM_VERSION 17, `CP2A.260605.016`) | ✅ product config resolves |
 | Soong analysis | ✅ **passes with no errors** (2026-11-10, 2 h 53 m on a 10 GB WSL). It wrote `make_vars`/`late`/`installs-lineage_mona.mk`, then was killed by SIGHUP from a closed terminal while writing the ninja file. Re-running detached in tmux (`scripts/start-build.sh`). |
-| Kati / ninja / compile | not reached yet |
+| Kati | ❌→🔧 2026-11-10 08:38: `PRODUCT_PACKAGES` named 4 non-existent modules (legacy HIDL audio HAL + `MotoNrEnabler`). Fixed by switching to the AIDL audio HAL (`patches/*/0003`). Rebuild started 09:56. |
+| ninja / compile | not reached yet |
 | Boot on hardware | not reached yet |
 
 ### Why AIDL conflicts are the main blocker
@@ -122,4 +123,5 @@ and PIN scrambling. That is the long-term goal of this repo, staged in `HARDENIN
 | 2026-11-09 | Adapt tree to W1VAS36 instead of hunting W1UANS36H firmware | The tree pins `W1UANS36H.29-25-2-6`; the W1VAS36 firmware is what's available. Missing blobs trimmed, new ones added |
 | 2026-11-10 | Publish tree changes as `patches/` now, forks later | They existed only as uncommitted edits in WSL; one `repo sync --force-sync` could lose them |
 | 2026-11-10 | `libcamera2ndk_vendor`: build AOSP's instead of patching the blob | `replace_needed` V2→V3 on a prebuilt risks parcelable ABI drift; the NDK camera C API is stable, so the AOSP build is the safer swap |
+| 2026-11-10 | Audio: AIDL QTI HAL from source (`sm8450-6.6`), not the legacy HIDL HAL | Kernel 6.6 selects the `sm8450-6.6` variant, which only has the AIDL HAL. The stock vendor runs the same AIDL stack. Pointing audio back at the `sm8450` HIDL tree would mix two QCOM variants. |
 | 2026-11-10 | Unpin the WFD blobs rather than kang | The pins describe another firmware; with the pins removed, the existing fixups run on the stock W1VAS36 files |

@@ -23,6 +23,10 @@ if tmux has-session -t build 2>/dev/null; then
         exit 1
     fi
     tmux kill-session -t build
+    # killing the last session shuts the tmux server down; starting a new session while it
+    # is still exiting fails with "server exited unexpectedly", so wait for it to go away
+    for _ in $(seq 1 20); do tmux ls >/dev/null 2>&1 || break; sleep 0.5; done
+    sleep 1
 fi
 
 # strip CRLF in case the repo was checked out on Windows
@@ -35,6 +39,10 @@ tmux new-session -d -s build -x 220 -y 50 \
     "BUILD_LOG='$BUILD_LOG' bash '$runner'; echo BUILD-EXIT=\$? | tee -a '$BUILD_LOG'; exec bash"
 
 sleep 2
+if ! tmux has-session -t build 2>/dev/null; then
+    echo "ERROR: the tmux 'build' session did not start. Check: tmux ls; tail ~/build.log" >&2
+    exit 1
+fi
 tmux list-sessions
 echo
 echo "Build launched (log: $BUILD_LOG). Follow it with:"

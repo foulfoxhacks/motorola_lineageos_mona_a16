@@ -1,0 +1,11 @@
+diff --git a/proprietary-files.txt b/proprietary-files.txt
+index cff50aa..2093d03 100644
+--- a/proprietary-files.txt
++++ b/proprietary-files.txt
+@@ -323,3 +323,6 @@ vendor/etc/thermal-engine.conf
+ vendor/firmware/tm_goodix_cfg_group.bin
+ 
+ # Touchscreen firmware (recovery)
++
++# Audio (AIDL HAL module config, Motorola-tuned)
++vendor/etc/audio/audio_module_config_primary.xml
