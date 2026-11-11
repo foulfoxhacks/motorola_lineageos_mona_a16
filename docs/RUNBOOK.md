@@ -14,6 +14,29 @@ $env:Path = "C:\mona_work\platform-tools;$env:Path"
 
 ---
 
+## One-window automated pipeline (recommended)
+
+```powershell
+# PS: opens a dedicated "mona build pipeline" window that runs every step below
+Start-Process powershell -ArgumentList '-NoExit','-ExecutionPolicy','Bypass','-File','C:\mona_work\motorola_lineageos_mona_a16\scripts\build-pipeline.ps1'
+```
+
+| Step | What it does |
+|---|---|
+| 1 | checks the WSL distro and `~/lineage` |
+| 2 | starts the WSL keepalive and keep-awake |
+| 3 | applies `patches/` (skipped while a build runs) |
+| 4 | stages the stock DTB/DTBO if missing (skipped while a build runs) |
+| 5 | starts the build in tmux, or **attaches** to the one already running |
+| 6 | prints the stage every minute: soong → Kati → compile `[ x% n/total ]` |
+| 7 | shows `C:\mona_work\out\BUILD_RESULT.txt` |
+
+Closing the window does **not** stop the build; run the same command again to re-attach.
+`-Restart` kills the running build and starts a fresh one.
+WSL can answer slowly while soong uses all memory. The window then prints "WSL busy" and retries.
+
+---
+
 ## Unattended builds (runs without Claude or any open window)
 
 Three detached pieces, none of them a child of your terminal or of Claude:

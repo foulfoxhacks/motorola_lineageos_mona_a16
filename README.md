@@ -124,6 +124,8 @@ extract them from your own copy of the stock firmware.
     ├── apply-patches.sh       apply patches/ to the tree (idempotent)
     ├── extract-blobs.sh, fix-extract-tools.sh   blob extraction from stock firmware
     ├── extract-dt.sh          stage the stock DTB + DTBO from your firmware (run by extract-blobs.sh)
+    ├── build-pipeline.ps1     ONE-WINDOW AUTOMATED PIPELINE: helpers → patches → DT → build → monitor → result
+    ├── build-status.sh        one-line build stage probe (used by build-pipeline.ps1)
     ├── run_build.sh, start-build.sh             build launchers (start-build = detached tmux)
     ├── wsl-keepalive.ps1      keep the WSL distro alive during long builds (tmux alone dies with it)
     ├── keep-awake.ps1         stop Windows idle-sleep until the build result is written
