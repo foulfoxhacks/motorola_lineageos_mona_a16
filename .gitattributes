@@ -16,3 +16,6 @@
 *.apk binary
 *.7z  binary
 *.zip binary
+
+# Patches against files that themselves contain CRLF line endings must be kept byte-exact
+patches/kernel/motorola/sm6475-modules/motorola/*.patch -text
