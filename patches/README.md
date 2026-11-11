@@ -86,6 +86,15 @@ Motorola's stock vendor also runs the AIDL stack: `audiohalservice.qti`, `audio.
 - Requires the Motorola MMI driver repo from `local_manifests/mona.xml`
   (`MotorolaMobilityLLC/motorola-kernel-modules` @ `MMI-W1VAS36.62-22-16-16`). Run `repo sync` before building.
 
+**`mona/0005`: stock device trees.** Removes the `vendor/ext_config/moto-parrot-mona.config` kernel fragment, which is not in the
+LineageOS kernel. Packages the stock DTB and DTBO (`BOARD_PREBUILT_DTBIMAGE_DIR` / `BOARD_PREBUILT_DTBOIMAGE` →
+`vendor/motorola/mona-dt`, staged by `scripts/extract-dt.sh`), because no public mona DTS exists.
+
+**`kernel/motorola/sm6475-modules/motorola/0001`**, on Motorola's `motorola-kernel-modules` @ `MMI-W1VAS36.62-22-16-16`:
+rewrites the hard-coded Motorola source layout in 225 Kbuild/Makefiles. `$(ANDROID_BUILD_TOP)/motorola/kernel/modules`
+and `$(TOP)/motorola/kernel/modules` become `$(KERNEL_SRC)/../sm6475-modules/motorola`, and kernel `drivers/base`
+include paths become `$(KERNEL_SRC)/drivers/base`. Same approach as LineageOS's `sm7435-modules` fork.
+
 **`kernel/motorola/sm6475-modules`**
 - `Android.bp`: the soong namespace import pointed at `kernel/qcom/sm8450`, which does not exist. It now
   imports `kernel/motorola/sm6475`.

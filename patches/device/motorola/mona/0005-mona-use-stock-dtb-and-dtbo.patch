@@ -1,0 +1,28 @@
+diff --git a/BoardConfig.mk b/BoardConfig.mk
+index 6ed8969..2571e1a 100644
+--- a/BoardConfig.mk
++++ b/BoardConfig.mk
+@@ -22,10 +22,6 @@ include device/motorola/sm6475-common/BoardConfigCommon.mk
+ # Bootloader
+ TARGET_BOOTLOADER_BOARD_NAME := mona
+ 
+-# Kernel
+-TARGET_KERNEL_CONFIG += \
+-	vendor/ext_config/moto-parrot-mona.config
+-
+ # Partitions
+ BOARD_MOT_DP_GROUP_SIZE := 9038725120 # ( BOARD_SUPER_PARTITION_SIZE - 4MB )
+ BOARD_SUPER_PARTITION_SIZE := 9042919424
+@@ -53,3 +49,12 @@ include vendor/motorola/mona/BoardConfigVendor.mk
+ # SPI bus code with this flag; Motorola passes it from their device makefiles via the driver's
+ # Android.mk, which the LineageOS kernel build does not read.
+ TARGET_KERNEL_ADDITIONAL_FLAGS += CONFIG_TOUCHSCREEN_GOODIX_BRL_SPI=y
++
++# Device trees: no public source for mona's board DTS exists (LineageOS sm6475-devicetrees
++# is Qualcomm reference only, without a moto,mona overlay, and Motorola's kernel drop omits
++# dts/vendor). Package the stock DTB and DTBO, staged from your own firmware by
++# scripts/extract-dt.sh into vendor/motorola/mona-dt.
++TARGET_NEEDS_DTBOIMAGE := false
++BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := false
++BOARD_PREBUILT_DTBIMAGE_DIR := vendor/motorola/mona-dt/dtb
++BOARD_PREBUILT_DTBOIMAGE := vendor/motorola/mona-dt/dtbo.img

@@ -1,0 +1,3118 @@
+diff --git a/drivers/backlight/aw99703/Kbuild b/drivers/backlight/aw99703/Kbuild
+index 0772225..19e9428 100644
+--- a/drivers/backlight/aw99703/Kbuild
++++ b/drivers/backlight/aw99703/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += leds_aw99703.o
+diff --git a/drivers/backlight/ktd3136/Kbuild b/drivers/backlight/ktd3136/Kbuild
+index b4cf2eb..2b714cc 100644
+--- a/drivers/backlight/ktd3136/Kbuild
++++ b/drivers/backlight/ktd3136/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += ktd3136_bl.o
+diff --git a/drivers/backlight/lm3697/Kbuild b/drivers/backlight/lm3697/Kbuild
+index 3204c53..0f00d72 100644
+--- a/drivers/backlight/lm3697/Kbuild
++++ b/drivers/backlight/lm3697/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m := leds_lm3697.o
+ leds_lm3697-objs += ti_lm3697.o
+diff --git a/drivers/backlight/sm5350/Kbuild b/drivers/backlight/sm5350/Kbuild
+index 41852f5..3a79ba6 100644
+--- a/drivers/backlight/sm5350/Kbuild
++++ b/drivers/backlight/sm5350/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m   += sm5350_bl.o
+ 
+diff --git a/drivers/ese/st54spi_gpio/Kbuild b/drivers/ese/st54spi_gpio/Kbuild
+index 0e0b412..dd22d55 100644
+--- a/drivers/ese/st54spi_gpio/Kbuild
++++ b/drivers/ese/st54spi_gpio/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += st54spi_gpio.o
+ 
+diff --git a/drivers/ese/st54x/Kbuild b/drivers/ese/st54x/Kbuild
+index 1df74be..9c27612 100644
+--- a/drivers/ese/st54x/Kbuild
++++ b/drivers/ese/st54x/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += st54spi.o
+ 
+diff --git a/drivers/fm/Kbuild b/drivers/fm/Kbuild
+index 122a3c4..0ac68d3 100644
+--- a/drivers/fm/Kbuild
++++ b/drivers/fm/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += fm_ctrl.o
+diff --git a/drivers/gpio/pcal6408/Kbuild b/drivers/gpio/pcal6408/Kbuild
+index ec9c539..f17a081 100755
+--- a/drivers/gpio/pcal6408/Kbuild
++++ b/drivers/gpio/pcal6408/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+     EXTRA_CFLAGS += -DGPIOI2C_USER_DEBUG
+diff --git a/drivers/gud/MobiCoreDriver/Kbuild b/drivers/gud/MobiCoreDriver/Kbuild
+index 973e3a3..17d5e3d 100644
+--- a/drivers/gud/MobiCoreDriver/Kbuild
++++ b/drivers/gud/MobiCoreDriver/Kbuild
+@@ -20,7 +20,7 @@
+ EXTRA_CFLAGS += -Wall
+ EXTRA_CFLAGS += -DNDEBUG
+ EXTRA_CFLAGS +=  -Wno-declaration-after-statement
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/drivers/gud/MobiCoreDriver
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/gud/MobiCoreDriver
+ 
+ ifneq ($(filter m y,$(RSU_INTERNAL_CLOCK)),)
+  EXTRA_CFLAGS += -DRSU_INTERNAL_CLOCK
+diff --git a/drivers/input/misc/anc_fps_mmi/Kbuild b/drivers/input/misc/anc_fps_mmi/Kbuild
+index 4ab7275..f7bec36 100644
+--- a/drivers/input/misc/anc_fps_mmi/Kbuild
++++ b/drivers/input/misc/anc_fps_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+ EXTRA_CFLAGS += -DCONFIG_PM_WAKELOCKS
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
+ 
+ ifneq ($(filter m y,$(CONFIG_MMI_RELAY)),)
+ 	EXTRA_CFLAGS += -DMMI_RELAY_MODULE
+diff --git a/drivers/input/misc/bos0614_mmi/Kbuild b/drivers/input/misc/bos0614_mmi/Kbuild
+index abbef9d..d3c72a9 100644
+--- a/drivers/input/misc/bos0614_mmi/Kbuild
++++ b/drivers/input/misc/bos0614_mmi/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-	-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/bos0614_mmi \
+-	-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/bos0614_mmi/libs/dk-core/src \
+-	-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/bos0614_mmi/libs/dk-core
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++	-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/bos0614_mmi \
++	-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/bos0614_mmi/libs/dk-core/src \
++	-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/bos0614_mmi/libs/dk-core
+ 
+ EXTRA_CFLAGS += -DMOTOROLA
+ EXTRA_CFLAGS += -DLITTLE_ENDIAN=1234 -DBYTE_ORDER=LITTLE_ENDIAN
+diff --git a/drivers/input/misc/chipone_fps_mmi/Kbuild b/drivers/input/misc/chipone_fps_mmi/Kbuild
+index 9e3e67d..9d3f9b0 100644
+--- a/drivers/input/misc/chipone_fps_mmi/Kbuild
++++ b/drivers/input/misc/chipone_fps_mmi/Kbuild
+@@ -1,14 +1,14 @@
+-# add -Wall to try to catch everything we can.
+-EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-
+-prod_list := hawao penang pnangn
+-find_target := $(foreach find, $(prod_list), $(findstring $(find), $(TARGET_PRODUCT)))
+-find_target := $(strip $(find_target))
+-$(warning find_target=$(find_target))
+-ifneq ($(find_target),)
+-$(warning define SUPPORT_POWER_GPIO)
+-EXTRA_CFLAGS += -DSUPPORT_POWER_GPIO
+-endif
+-
+-obj-m += fpsensor_spi_tee.o
++# add -Wall to try to catch everything we can.
++EXTRA_CFLAGS += -Wall
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++
++prod_list := hawao penang pnangn
++find_target := $(foreach find, $(prod_list), $(findstring $(find), $(TARGET_PRODUCT)))
++find_target := $(strip $(find_target))
++$(warning find_target=$(find_target))
++ifneq ($(find_target),)
++$(warning define SUPPORT_POWER_GPIO)
++EXTRA_CFLAGS += -DSUPPORT_POWER_GPIO
++endif
++
++obj-m += fpsensor_spi_tee.o
+diff --git a/drivers/input/misc/chipone_fps_mmi_v1/Kbuild b/drivers/input/misc/chipone_fps_mmi_v1/Kbuild
+index f3a9670..53a7774 100644
+--- a/drivers/input/misc/chipone_fps_mmi_v1/Kbuild
++++ b/drivers/input/misc/chipone_fps_mmi_v1/Kbuild
+@@ -1,16 +1,16 @@
+-# add -Wall to try to catch everything we can.
+-EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
+-
+-prod_list := hawao penang pnangn fogona
+-find_target := $(foreach find, $(prod_list), $(findstring $(find), $(TARGET_PRODUCT)))
+-find_target := $(strip $(find_target))
+-$(warning find_target=$(find_target))
+-ifneq ($(find_target),)
+-$(warning define SUPPORT_POWER_GPIO)
+-EXTRA_CFLAGS += -DSUPPORT_POWER_GPIO
+-endif
+-
+-obj-m := fpsensor_spi_tee_v1.o
+-fpsensor_spi_tee_v1-objs := \
+-	fpsensor_spi_tee.o
++# add -Wall to try to catch everything we can.
++EXTRA_CFLAGS += -Wall
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++
++prod_list := hawao penang pnangn fogona
++find_target := $(foreach find, $(prod_list), $(findstring $(find), $(TARGET_PRODUCT)))
++find_target := $(strip $(find_target))
++$(warning find_target=$(find_target))
++ifneq ($(find_target),)
++$(warning define SUPPORT_POWER_GPIO)
++EXTRA_CFLAGS += -DSUPPORT_POWER_GPIO
++endif
++
++obj-m := fpsensor_spi_tee_v1.o
++fpsensor_spi_tee_v1-objs := \
++	fpsensor_spi_tee.o
+diff --git a/drivers/input/misc/cs_press_mmi/Kbuild b/drivers/input/misc/cs_press_mmi/Kbuild
+index 03a3299..1760776 100644
+--- a/drivers/input/misc/cs_press_mmi/Kbuild
++++ b/drivers/input/misc/cs_press_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m := cs_press_mmi.o
+ 
+diff --git a/drivers/input/misc/ets_bix_mmi/Kbuild b/drivers/input/misc/ets_bix_mmi/Kbuild
+index de3c7a0..3cffd31 100644
+--- a/drivers/input/misc/ets_bix_mmi/Kbuild
++++ b/drivers/input/misc/ets_bix_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-				-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/ets_bix_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++				-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/ets_bix_mmi
+ 
+ ifneq ($(filter m y,$(CONFIG_EGIS_PANEL_NOTIFICATIONS)),)
+     EXTRA_CFLAGS += -DCONFIG_PANEL_NOTIFICATIONS
+diff --git a/drivers/input/misc/ets_fps_mmi/Kbuild b/drivers/input/misc/ets_fps_mmi/Kbuild
+index 43d13ca..5308814 100644
+--- a/drivers/input/misc/ets_fps_mmi/Kbuild
++++ b/drivers/input/misc/ets_fps_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/ets_fps_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/ets_fps_mmi
+ 
+ ifneq ($(filter m y,$(CONFIG_INPUT_EGISTEC_FPS_NAVI_HORIZON)),)
+ 	EXTRA_CFLAGS += -DCONFIG_INPUT_EGISTEC_FPS_NAVI_HORIZON
+diff --git a/drivers/input/misc/focal_fps_mmi/Kbuild b/drivers/input/misc/focal_fps_mmi/Kbuild
+index 4f9cb1a..2200641 100644
+--- a/drivers/input/misc/focal_fps_mmi/Kbuild
++++ b/drivers/input/misc/focal_fps_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/focal_fps_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/focal_fps_mmi
+ 
+ 
+ 
+diff --git a/drivers/input/misc/focaltech_fps_mmi/Kbuild b/drivers/input/misc/focaltech_fps_mmi/Kbuild
+index d85027a..623537c 100644
+--- a/drivers/input/misc/focaltech_fps_mmi/Kbuild
++++ b/drivers/input/misc/focaltech_fps_mmi/Kbuild
+@@ -1,14 +1,14 @@
+-# add -Wall to try to catch everything we can.
+-EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-
+-ifneq ($(filter m y,$(CONFIG_MMI_RELAY)),)
+-	EXTRA_CFLAGS += -DMMI_RELAY_MODULE
+-endif
+-
+-focaltech_fps_mmi-y +=  ff_core.o ff_spi.o
+-
+-obj-m += focaltech_fps_mmi.o
+-
+-KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../../../mmi_relay/$(GKI_OBJ_MODULE_DIR)/Module.symvers
+-
++# add -Wall to try to catch everything we can.
++EXTRA_CFLAGS += -Wall
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++
++ifneq ($(filter m y,$(CONFIG_MMI_RELAY)),)
++	EXTRA_CFLAGS += -DMMI_RELAY_MODULE
++endif
++
++focaltech_fps_mmi-y +=  ff_core.o ff_spi.o
++
++obj-m += focaltech_fps_mmi.o
++
++KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../../../mmi_relay/$(GKI_OBJ_MODULE_DIR)/Module.symvers
++
+diff --git a/drivers/input/misc/fpc_fps_mmi/Kbuild b/drivers/input/misc/fpc_fps_mmi/Kbuild
+index 5d37a65..f62f508 100644
+--- a/drivers/input/misc/fpc_fps_mmi/Kbuild
++++ b/drivers/input/misc/fpc_fps_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ prod_list := devon leap
+ find_target := $(foreach find, $(prod_list), $(findstring $(find), $(TARGET_PRODUCT)))
+diff --git a/drivers/input/misc/goodix_fod_mmi/Kbuild b/drivers/input/misc/goodix_fod_mmi/Kbuild
+index 2be732a..29c073b 100644
+--- a/drivers/input/misc/goodix_fod_mmi/Kbuild
++++ b/drivers/input/misc/goodix_fod_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
+ 
+ ifneq ($(filter m y,$(CONFIG_MMI_RELAY)),)
+ 	EXTRA_CFLAGS += -DMMI_RELAY_MODULE
+diff --git a/drivers/input/misc/goodix_ppg_mmi/Kbuild b/drivers/input/misc/goodix_ppg_mmi/Kbuild
+index 5aff414..a9e5965 100644
+--- a/drivers/input/misc/goodix_ppg_mmi/Kbuild
++++ b/drivers/input/misc/goodix_ppg_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
+ 
+ ifneq ($(filter m y,$(CONFIG_MMI_RELAY)),)
+ 	EXTRA_CFLAGS += -DMMI_RELAY_MODULE
+diff --git a/drivers/input/misc/ldc2114_mmi/Kbuild b/drivers/input/misc/ldc2114_mmi/Kbuild
+index db4897b..341a274 100644
+--- a/drivers/input/misc/ldc2114_mmi/Kbuild
++++ b/drivers/input/misc/ldc2114_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ldc2114_keys-objs := ldc2114.o ldc2114-debugfs.o
+ 
+diff --git a/drivers/input/misc/qpnp_power_on_mmi/Kbuild b/drivers/input/misc/qpnp_power_on_mmi/Kbuild
+index dd859e8..19c0377 100644
+--- a/drivers/input/misc/qpnp_power_on_mmi/Kbuild
++++ b/drivers/input/misc/qpnp_power_on_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ KBUILD_EXTRA_SYMBOLS += $(CURDIR)/../../kernel/msm-$(MODULE_KERNEL_VERSION)/Module.symvers
+ 
+ obj-m += qpnp-power-on-mmi.o
+diff --git a/drivers/input/misc/rbs_fod_mmi/Kbuild b/drivers/input/misc/rbs_fod_mmi/Kbuild
+index 8ad751e..8f6af12 100644
+--- a/drivers/input/misc/rbs_fod_mmi/Kbuild
++++ b/drivers/input/misc/rbs_fod_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-				-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/rbs_fps_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++				-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/rbs_fps_mmi
+ 
+ ifneq ($(filter m y,$(CONFIG_EGIS_PANEL_NOTIFICATIONS)),)
+     EXTRA_CFLAGS += -DCONFIG_PANEL_NOTIFICATIONS
+diff --git a/drivers/input/misc/rbs_fps_mmi/Kbuild b/drivers/input/misc/rbs_fps_mmi/Kbuild
+index b55d1b2..5409e63 100644
+--- a/drivers/input/misc/rbs_fps_mmi/Kbuild
++++ b/drivers/input/misc/rbs_fps_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-				-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/rbs_fps_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++				-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/rbs_fps_mmi
+ 
+ ifneq ($(filter m y,$(CONFIG_EGIS_PANEL_NOTIFICATIONS)),)
+     EXTRA_CFLAGS += -DCONFIG_PANEL_NOTIFICATIONS
+diff --git a/drivers/input/misc/silead_fps_mmi/Kbuild b/drivers/input/misc/silead_fps_mmi/Kbuild
+index 4a1f8fd..549ca87 100644
+--- a/drivers/input/misc/silead_fps_mmi/Kbuild
++++ b/drivers/input/misc/silead_fps_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifdef CONFIG_ARCH_MSM
+ 	 ccflags-y += -DBSP_SIL_PLAT_QCOM
+diff --git a/drivers/input/misc/vl53L0/Kbuild b/drivers/input/misc/vl53L0/Kbuild
+index f2a451a..ff703e8 100644
+--- a/drivers/input/misc/vl53L0/Kbuild
++++ b/drivers/input/misc/vl53L0/Kbuild
+@@ -5,8 +5,8 @@
+ # Each configuration option enables a list of files.
+ 
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/drivers/input/misc/vl53L0
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/drivers/input/misc/vl53L0/inc
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/vl53L0
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/vl53L0/inc
+ 
+ obj-m          += stmvl53l0.o
+ stmvl53l0-objs := stmvl53l0_module.o stmvl53l0_module-i2c.o
+diff --git a/drivers/input/misc/vl53L1/Kbuild b/drivers/input/misc/vl53L1/Kbuild
+index eedf642..594a385 100644
+--- a/drivers/input/misc/vl53L1/Kbuild
++++ b/drivers/input/misc/vl53L1/Kbuild
+@@ -3,10 +3,10 @@
+ #
+ 
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/vl53L1/inc \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/vl53L1/ipp \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/vl53L1
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/vl53L1/inc \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/vl53L1/ipp \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/vl53L1
+ 
+ # define this environment variable if you want to compile driver for an old
+ # kernel
+diff --git a/drivers/input/misc/vl53L1_14_1_2/Kbuild b/drivers/input/misc/vl53L1_14_1_2/Kbuild
+index 36d80f0..3eca9b5 100644
+--- a/drivers/input/misc/vl53L1_14_1_2/Kbuild
++++ b/drivers/input/misc/vl53L1_14_1_2/Kbuild
+@@ -3,11 +3,11 @@
+ #
+ 
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/vl53L1_14_1_2/inc \
+-				-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/vl53L1_14_1_2/ipp \
+-				-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/vl53L1_14_1_2 \
+-				-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/misc/vl53L1_14_1_2/protected/inc
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/vl53L1_14_1_2/inc \
++				-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/vl53L1_14_1_2/ipp \
++				-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/vl53L1_14_1_2 \
++				-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/misc/vl53L1_14_1_2/protected/inc
+ 
+ # define this environment variable if you want to compile driver for an old
+ # kernel
+diff --git a/drivers/input/misc/vl53L5/Kbuild b/drivers/input/misc/vl53L5/Kbuild
+index c5206c3..a3c878d 100644
+--- a/drivers/input/misc/vl53L5/Kbuild
++++ b/drivers/input/misc/vl53L5/Kbuild
+@@ -3,7 +3,7 @@
+ #
+ 
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += stmvl53l5.o
+ stmvl53l5-objs := stmvl53l5_module.o stmvl53l5_i2c.o stmvl53l5_spi.o stmvl53l5_load_fw.o
+diff --git a/drivers/input/touchscreen/AW8680X/Kbuild b/drivers/input/touchscreen/AW8680X/Kbuild
+index 090b3b2..88d4e45 100644
+--- a/drivers/input/touchscreen/AW8680X/Kbuild
++++ b/drivers/input/touchscreen/AW8680X/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/AW8680X
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/AW8680X
+ 
+ 
+ obj-m += AW8680X.o
+diff --git a/drivers/input/touchscreen/chipone_tddi_fhd_mmi/Kbuild b/drivers/input/touchscreen/chipone_tddi_fhd_mmi/Kbuild
+index a688886..4e35775 100644
+--- a/drivers/input/touchscreen/chipone_tddi_fhd_mmi/Kbuild
++++ b/drivers/input/touchscreen/chipone_tddi_fhd_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/chipone_tddi_fhd_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/chipone_tddi_fhd_mmi
+ ifneq ($(filter m y,$(CONFIG_CHIPONE_ESD)),)
+ EXTRA_CFLAGS += -DCONFIG_CTS_ESD_PROTECTION
+ endif
+diff --git a/drivers/input/touchscreen/chipone_tddi_mmi/Kbuild b/drivers/input/touchscreen/chipone_tddi_mmi/Kbuild
+index f6b8034..9f0599d 100644
+--- a/drivers/input/touchscreen/chipone_tddi_mmi/Kbuild
++++ b/drivers/input/touchscreen/chipone_tddi_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/chipone_tddi_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/chipone_tddi_mmi
+ ifneq ($(filter m y,$(CONFIG_CHIPONE_ESD)),)
+ EXTRA_CFLAGS += -DCONFIG_CTS_ESD_PROTECTION
+ endif
+diff --git a/drivers/input/touchscreen/chipone_tddi_v2_mmi/Kbuild b/drivers/input/touchscreen/chipone_tddi_v2_mmi/Kbuild
+index d2defc3..33d9825 100644
+--- a/drivers/input/touchscreen/chipone_tddi_v2_mmi/Kbuild
++++ b/drivers/input/touchscreen/chipone_tddi_v2_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/chipone_tddi_fhd_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/chipone_tddi_fhd_mmi
+ ifneq ($(filter m y,$(CONFIG_CHIPONE_ESD)),)
+ EXTRA_CFLAGS += -DCONFIG_CTS_ESD_PROTECTION
+ endif
+diff --git a/drivers/input/touchscreen/chipone_tddi_v3_mmi/Kbuild b/drivers/input/touchscreen/chipone_tddi_v3_mmi/Kbuild
+index a1c3b2b..943e6ad 100644
+--- a/drivers/input/touchscreen/chipone_tddi_v3_mmi/Kbuild
++++ b/drivers/input/touchscreen/chipone_tddi_v3_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/chipone_tddi_v3_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/chipone_tddi_v3_mmi
+ ifneq ($(filter m y,$(CONFIG_CHIPONE_ESD)),)
+ EXTRA_CFLAGS += -DCONFIG_CTS_ESD_PROTECTION
+ endif
+diff --git a/drivers/input/touchscreen/focaltech_0flash_mmi/Kbuild b/drivers/input/touchscreen/focaltech_0flash_mmi/Kbuild
+index 47f4ee1..ddd69b8 100644
+--- a/drivers/input/touchscreen/focaltech_0flash_mmi/Kbuild
++++ b/drivers/input/touchscreen/focaltech_0flash_mmi/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_0flash_mmi \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_0flash_mmi/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_0flash_mmi/focaltech_test
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_0flash_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_0flash_mmi/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_0flash_mmi/focaltech_test
+ 
+ obj-m := focaltech_0flash_mmi.o
+ focaltech_0flash_mmi-objs += focaltech_core.o
+diff --git a/drivers/input/touchscreen/focaltech_0flash_v2_mmi/Kbuild b/drivers/input/touchscreen/focaltech_0flash_v2_mmi/Kbuild
+index 5dd7573..1877f84 100644
+--- a/drivers/input/touchscreen/focaltech_0flash_v2_mmi/Kbuild
++++ b/drivers/input/touchscreen/focaltech_0flash_v2_mmi/Kbuild
+@@ -1,8 +1,8 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_0flash_v2_mmi \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_0flash_v2_mmi/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_0flash_v2_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_0flash_v2_mmi/include
+ 
+ obj-m := focaltech_0flash_v2_mmi.o
+ focaltech_0flash_v2_mmi-objs += focaltech_core.o
+diff --git a/drivers/input/touchscreen/focaltech_mmi/Kbuild b/drivers/input/touchscreen/focaltech_mmi/Kbuild
+index 229af91..24da39d 100644
+--- a/drivers/input/touchscreen/focaltech_mmi/Kbuild
++++ b/drivers/input/touchscreen/focaltech_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_mmi
+ 
+ obj-m := focaltech_mmi.o
+ focaltech_mmi-objs += focaltech_ts.o
+diff --git a/drivers/input/touchscreen/focaltech_touch_v3/Kbuild b/drivers/input/touchscreen/focaltech_touch_v3/Kbuild
+index 2ba1038..5fffda6 100644
+--- a/drivers/input/touchscreen/focaltech_touch_v3/Kbuild
++++ b/drivers/input/touchscreen/focaltech_touch_v3/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_touch_v3 \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_touch_v3/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_touch_v3/focaltech_test
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_touch_v3 \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_touch_v3/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_touch_v3/focaltech_test
+ 
+ obj-m := focaltech_v3.o
+ focaltech_v3-objs += focaltech_core.o
+diff --git a/drivers/input/touchscreen/focaltech_touch_v3_4/Kbuild b/drivers/input/touchscreen/focaltech_touch_v3_4/Kbuild
+index ac3048f..7e7e03c 100644
+--- a/drivers/input/touchscreen/focaltech_touch_v3_4/Kbuild
++++ b/drivers/input/touchscreen/focaltech_touch_v3_4/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_touch_v3_4 \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_touch_v3_4/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_touch_v3_4/focaltech_test
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_touch_v3_4 \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_touch_v3_4/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_touch_v3_4/focaltech_test
+ 
+ obj-m := focaltech_v3_4.o
+ focaltech_v3_4-objs += focaltech_core.o
+diff --git a/drivers/input/touchscreen/focaltech_touch_v3_5/Kbuild b/drivers/input/touchscreen/focaltech_touch_v3_5/Kbuild
+index d916024..ea3acc0 100644
+--- a/drivers/input/touchscreen/focaltech_touch_v3_5/Kbuild
++++ b/drivers/input/touchscreen/focaltech_touch_v3_5/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_touch_v3_5 \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_touch_v3_5/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_touch_v3_5/focaltech_test
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_touch_v3_5 \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_touch_v3_5/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_touch_v3_5/focaltech_test
+ 
+ obj-m := focaltech_v3_5.o
+ focaltech_v3_5-objs += focaltech_core.o
+diff --git a/drivers/input/touchscreen/focaltech_v2_mmi/Kbuild b/drivers/input/touchscreen/focaltech_v2_mmi/Kbuild
+index 7212dfd..8f72559 100644
+--- a/drivers/input/touchscreen/focaltech_v2_mmi/Kbuild
++++ b/drivers/input/touchscreen/focaltech_v2_mmi/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_v2_mmi \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_v2_mmi/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_v2_mmi/focaltech_test
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_v2_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_v2_mmi/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_v2_mmi/focaltech_test
+ 
+ obj-m := focaltech_v2_mmi.o
+ focaltech_v2_mmi-objs += focaltech_core.o
+diff --git a/drivers/input/touchscreen/focaltech_v3_mmi/Kbuild b/drivers/input/touchscreen/focaltech_v3_mmi/Kbuild
+index 31f5d2c..807a7df 100644
+--- a/drivers/input/touchscreen/focaltech_v3_mmi/Kbuild
++++ b/drivers/input/touchscreen/focaltech_v3_mmi/Kbuild
+@@ -1,8 +1,8 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_v3_mmi \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_v3_mmi/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_v3_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_v3_mmi/include
+ 
+ obj-m := focaltech_v3_mmi.o
+ focaltech_v3_mmi-objs += focaltech_core.o
+@@ -35,7 +35,7 @@ ifneq ($(filter m y,$(CONFIG_INPUT_FOCALTECH_MMI_ENABLE_DOUBLE_TAP)),)
+ endif
+ 
+ ifneq ($(filter m y,$(CONFIG_INPUT_FTS_TEST_SUPPORT)),)
+-	EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/focaltech_mtk_v2_mmi/focaltech_test
++	EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/focaltech_mtk_v2_mmi/focaltech_test
+ 	EXTRA_CFLAGS += -DFTS_TEST_SUPPORT
+ 	focaltech_mtk_v2_mmi-objs += focaltech_test/focaltech_test.o
+ 	focaltech_mtk_v2_mmi-objs += focaltech_test/focaltech_test_ini.o
+diff --git a/drivers/input/touchscreen/gcore_mmi/Kbuild b/drivers/input/touchscreen/gcore_mmi/Kbuild
+index b32a089..eef6d8d 100644
+--- a/drivers/input/touchscreen/gcore_mmi/Kbuild
++++ b/drivers/input/touchscreen/gcore_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/gcore_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/gcore_mmi
+ 
+ ifeq ($(filter m y, $(CONFIG_TOUCHSCREEN_GCORE_CHIPSET)),)
+ 	obj-m += gcore_mmi.o
+diff --git a/drivers/input/touchscreen/goodix_berlin_mmi/Kbuild b/drivers/input/touchscreen/goodix_berlin_mmi/Kbuild
+index bd30611..9e52c1d 100644
+--- a/drivers/input/touchscreen/goodix_berlin_mmi/Kbuild
++++ b/drivers/input/touchscreen/goodix_berlin_mmi/Kbuild
+@@ -4,7 +4,7 @@ ifneq ($(filter m y,$(CHANGE_STACK_FRAME_SIZE)),)
+ EXTRA_CFLAGS += -Wframe-larger-than=4096
+ endif
+ EXTRA_CFLAGS += \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m := goodix_brl_mmi.o
+ goodix_brl_mmi-objs := \
+diff --git a/drivers/input/touchscreen/goodix_gt96x_mmi/Kbuild b/drivers/input/touchscreen/goodix_gt96x_mmi/Kbuild
+index c23024b..ae10630 100644
+--- a/drivers/input/touchscreen/goodix_gt96x_mmi/Kbuild
++++ b/drivers/input/touchscreen/goodix_gt96x_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+ EXTRA_CFLAGS += \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m := goodix_gt96x_mmi.o
+ goodix_gt96x_mmi-objs := \
+diff --git a/drivers/input/touchscreen/goodix_gtx8_mmi/Kbuild b/drivers/input/touchscreen/goodix_gtx8_mmi/Kbuild
+index d527679..3d5814d 100644
+--- a/drivers/input/touchscreen/goodix_gtx8_mmi/Kbuild
++++ b/drivers/input/touchscreen/goodix_gtx8_mmi/Kbuild
+@@ -1,8 +1,8 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+ EXTRA_CFLAGS += \
+-		-I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/goodix_gtx8_mmi
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/goodix_gtx8_mmi
+ 
+ obj-m := goodix_mmi.o
+ goodix_mmi-objs = goodix_ts_i2c.o goodix_ts_core.o goodix_ts_test.o goodix_cfg_bin.o goodix_gtx8_update.o goodix_ts_tools.o goodix_ts_gesture.o
+diff --git a/drivers/input/touchscreen/goodix_gtx8_v1430_mmi/Kbuild b/drivers/input/touchscreen/goodix_gtx8_v1430_mmi/Kbuild
+index 81b9182..3afc428 100644
+--- a/drivers/input/touchscreen/goodix_gtx8_v1430_mmi/Kbuild
++++ b/drivers/input/touchscreen/goodix_gtx8_v1430_mmi/Kbuild
+@@ -1,8 +1,8 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+ EXTRA_CFLAGS += \
+-		-I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/goodix_gtx8_v1430_mmi
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/goodix_gtx8_v1430_mmi
+ 
+ obj-m := goodix_v1430_mmi.o
+ goodix_v1430_mmi-objs = goodix_ts_i2c.o goodix_ts_core.o goodix_cfg_bin.o
+diff --git a/drivers/input/touchscreen/goodix_gtx8_v1510_mmi/Kbuild b/drivers/input/touchscreen/goodix_gtx8_v1510_mmi/Kbuild
+index d6ec17b..b9eb70e 100644
+--- a/drivers/input/touchscreen/goodix_gtx8_v1510_mmi/Kbuild
++++ b/drivers/input/touchscreen/goodix_gtx8_v1510_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+ EXTRA_CFLAGS += \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m := goodix_v1510_mmi.o
+ goodix_v1510_mmi-objs = goodix_ts_i2c.o goodix_ts_core.o goodix_ts_test.o goodix_cfg_bin.o goodix_gtx8_update.o goodix_ts_gesture.o goodix_ts_tools.o
+diff --git a/drivers/input/touchscreen/goodix_thp/Kbuild b/drivers/input/touchscreen/goodix_thp/Kbuild
+index 99c7326..2714438 100644
+--- a/drivers/input/touchscreen/goodix_thp/Kbuild
++++ b/drivers/input/touchscreen/goodix_thp/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+ EXTRA_CFLAGS += \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m := goodix_brl_thp.o
+ goodix_brl_thp-objs := \
+diff --git a/drivers/input/touchscreen/himax_0flash_mmi/Kbuild b/drivers/input/touchscreen/himax_0flash_mmi/Kbuild
+index bef5812..5f48122 100644
+--- a/drivers/input/touchscreen/himax_0flash_mmi/Kbuild
++++ b/drivers/input/touchscreen/himax_0flash_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102/Kbuild b/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102/Kbuild
+index eea8242..c8ee1c8 100644
+--- a/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102/Kbuild
++++ b/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi/support_ic \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi/support_ic \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102d/Kbuild b/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102d/Kbuild
+index f68b432..f391349 100644
+--- a/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102d/Kbuild
++++ b/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102d/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi/support_ic \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102d
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi/support_ic \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83102d
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112/Kbuild b/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112/Kbuild
+index a199508..f32c1d8 100644
+--- a/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112/Kbuild
++++ b/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi/support_ic \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi/support_ic \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112f/Kbuild b/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112f/Kbuild
+index b88f7fd..dedf714 100644
+--- a/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112f/Kbuild
++++ b/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112f/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi/support_ic \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112f
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi/support_ic \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_0flash_mmi/support_ic/himax_0flash_mmi_hx83112f
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_mmi/Kbuild b/drivers/input/touchscreen/himax_mmi/Kbuild
+index 4e39b6c..ab20f26 100644
+--- a/drivers/input/touchscreen/himax_mmi/Kbuild
++++ b/drivers/input/touchscreen/himax_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_mmi
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_v2_mmi/Kbuild b/drivers/input/touchscreen/himax_v2_mmi/Kbuild
+index 9e764db..2950eee 100644
+--- a/drivers/input/touchscreen/himax_v2_mmi/Kbuild
++++ b/drivers/input/touchscreen/himax_v2_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v2_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v2_mmi
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102/Kbuild b/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102/Kbuild
+index a68da6a..98410b8 100644
+--- a/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102/Kbuild
++++ b/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v2_mmi \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v2_mmi/support_ic \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v2_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v2_mmi/support_ic \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102d/Kbuild b/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102d/Kbuild
+index f495e15..740e2c3 100644
+--- a/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102d/Kbuild
++++ b/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102d/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v2_mmi \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v2_mmi/support_ic \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102d
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v2_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v2_mmi/support_ic \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83102d
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83112/Kbuild b/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83112/Kbuild
+index 52d075d..4af9254 100644
+--- a/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83112/Kbuild
++++ b/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83112/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v2_mmi \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v2_mmi/support_ic \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83112
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v2_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v2_mmi/support_ic \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v2_mmi/support_ic/himax_v2_mmi_hx83112
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_v3_mmi/Kbuild b/drivers/input/touchscreen/himax_v3_mmi/Kbuild
+index 54bb15e..9af6da9 100644
+--- a/drivers/input/touchscreen/himax_v3_mmi/Kbuild
++++ b/drivers/input/touchscreen/himax_v3_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v3_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v3_mmi
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/himax_v3_mmi/support_ic/himax_v3_mmi_hx83102d/Kbuild b/drivers/input/touchscreen/himax_v3_mmi/support_ic/himax_v3_mmi_hx83102d/Kbuild
+index 336702c..9b71365 100644
+--- a/drivers/input/touchscreen/himax_v3_mmi/support_ic/himax_v3_mmi_hx83102d/Kbuild
++++ b/drivers/input/touchscreen/himax_v3_mmi/support_ic/himax_v3_mmi_hx83102d/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v3_mmi \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v3_mmi/support_ic \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/himax_v3_mmi/support_ic/himax_v3_mmi_hx83102d
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v3_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v3_mmi/support_ic \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/himax_v3_mmi/support_ic/himax_v3_mmi_hx83102d
+ EXTRA_CFLAGS += -DCONFIG_TOUCHSCREEN_HIMAX_DEBUG \
+ 		-DCONFIG_TOUCHSCREEN_HIMAX_INSPECT
+ 
+diff --git a/drivers/input/touchscreen/ili9882_mmi/Kbuild b/drivers/input/touchscreen/ili9882_mmi/Kbuild
+index f3a8915..579f5a2 100644
+--- a/drivers/input/touchscreen/ili9882_mmi/Kbuild
++++ b/drivers/input/touchscreen/ili9882_mmi/Kbuild
+@@ -1,8 +1,8 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/ili9882_mmi \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/ili9882_mmi/firmware
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/ili9882_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/ili9882_mmi/firmware
+ 
+ ifeq ($(filter m y, $(CONFIG_TOUCHSCREEN_ILITEK_CHIPSET)),)
+ 	obj-m += ili9882_mmi.o
+diff --git a/drivers/input/touchscreen/ilitek_0flash_mmi/Kbuild b/drivers/input/touchscreen/ilitek_0flash_mmi/Kbuild
+index aad8cb6..b037f79 100644
+--- a/drivers/input/touchscreen/ilitek_0flash_mmi/Kbuild
++++ b/drivers/input/touchscreen/ilitek_0flash_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/ilitek_0flash_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/ilitek_0flash_mmi
+ 
+ ifeq ($(filter m y, $(CONFIG_TOUCHSCREEN_ILITEK_CHIPSET)),)
+ 	obj-m += ilitek_0flash_mmi.o
+diff --git a/drivers/input/touchscreen/ilitek_mmi/Kbuild b/drivers/input/touchscreen/ilitek_mmi/Kbuild
+index d20949d..7f18c8a 100644
+--- a/drivers/input/touchscreen/ilitek_mmi/Kbuild
++++ b/drivers/input/touchscreen/ilitek_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/ilitek_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/ilitek_mmi
+ 
+ ifeq ($(filter m y, $(CONFIG_TOUCHSCREEN_ILITEK_CHIPSET)),)
+ 	obj-m += ilitek_mmi.o
+diff --git a/drivers/input/touchscreen/ilitek_v3_mmi/Kbuild b/drivers/input/touchscreen/ilitek_v3_mmi/Kbuild
+index 3c1f362..649d45c 100644
+--- a/drivers/input/touchscreen/ilitek_v3_mmi/Kbuild
++++ b/drivers/input/touchscreen/ilitek_v3_mmi/Kbuild
+@@ -1,8 +1,8 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/ilitek_v3_mmi \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/ilitek_v3_mmi/firmware
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/ilitek_v3_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/ilitek_v3_mmi/firmware
+ 
+ ifeq ($(filter m y, $(CONFIG_TOUCHSCREEN_ILITEK_CHIPSET)),)
+ 	obj-m += ilitek_v3_mmi.o
+diff --git a/drivers/input/touchscreen/ilitek_v4_mmi/Kbuild b/drivers/input/touchscreen/ilitek_v4_mmi/Kbuild
+index 09bcfcc..2170fe3 100644
+--- a/drivers/input/touchscreen/ilitek_v4_mmi/Kbuild
++++ b/drivers/input/touchscreen/ilitek_v4_mmi/Kbuild
+@@ -1,8 +1,8 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/ilitek_v4_mmi \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/ilitek_v4_mmi/firmware
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/ilitek_v4_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/ilitek_v4_mmi/firmware
+ 
+ ifeq ($(filter m y, $(CONFIG_TOUCHSCREEN_ILITEK_CHIPSET)),)
+ 	obj-m += ilitek_v4_mmi.o
+diff --git a/drivers/input/touchscreen/nova_0flash_mmi/Kbuild b/drivers/input/touchscreen/nova_0flash_mmi/Kbuild
+index 5aac7d2..5f3e9b2 100644
+--- a/drivers/input/touchscreen/nova_0flash_mmi/Kbuild
++++ b/drivers/input/touchscreen/nova_0flash_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/nova_0flash_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/nova_0flash_mmi
+ 
+ ifeq ($(filter m y, $(CONFIG_TOUCHSCREEN_NT36xxx_HOSTDL_SPI)),)
+ 	obj-m := nova_0flash_mmi.o
+diff --git a/drivers/input/touchscreen/nova_36525_mmi/Kbuild b/drivers/input/touchscreen/nova_36525_mmi/Kbuild
+index 01a63f9..9e2a1a0 100644
+--- a/drivers/input/touchscreen/nova_36525_mmi/Kbuild
++++ b/drivers/input/touchscreen/nova_36525_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/nova_36525_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/nova_36525_mmi
+ 
+ ifeq ($(filter m y, $(CONFIG_TOUCHSCREEN_NOVATEK_CHIPSET)),)
+ 	obj-m := nova_36525_mmi.o
+diff --git a/drivers/input/touchscreen/nova_mmi/Kbuild b/drivers/input/touchscreen/nova_mmi/Kbuild
+index 1c3d4d1..355c962 100644
+--- a/drivers/input/touchscreen/nova_mmi/Kbuild
++++ b/drivers/input/touchscreen/nova_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/nova_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/nova_mmi
+ 
+ ifeq ($(filter m y, $(CONFIG_TOUCHSCREEN_NOVATEK_CHIPSET)),)
+ 	obj-m := nova_mmi.o
+diff --git a/drivers/input/touchscreen/parade_tma5xx_mmi/Kbuild b/drivers/input/touchscreen/parade_tma5xx_mmi/Kbuild
+index 8328172..831ab9f 100644
+--- a/drivers/input/touchscreen/parade_tma5xx_mmi/Kbuild
++++ b/drivers/input/touchscreen/parade_tma5xx_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+ EXTRA_CFLAGS += \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m := parade_tma5xx_mmi_core.o
+ parade_tma5xx_mmi_core-objs := \
+diff --git a/drivers/input/touchscreen/pixart_mmi/Kbuild b/drivers/input/touchscreen/pixart_mmi/Kbuild
+index de69447..f8e0202 100644
+--- a/drivers/input/touchscreen/pixart_mmi/Kbuild
++++ b/drivers/input/touchscreen/pixart_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we canss
+ # EXTRA_CFLAGS += -Wallss
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/pixart_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/pixart_mmi
+ 
+ obj-m := pct1812_mmi.o
+ pct1812_mmi-objs := pct1812_captouch.o
+diff --git a/drivers/input/touchscreen/pt/Kbuild b/drivers/input/touchscreen/pt/Kbuild
+index 7705267..579640a 100644
+--- a/drivers/input/touchscreen/pt/Kbuild
++++ b/drivers/input/touchscreen/pt/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/pt
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/pt
+ 
+ 
+ 
+diff --git a/drivers/input/touchscreen/raydium_mmi/Kbuild b/drivers/input/touchscreen/raydium_mmi/Kbuild
+index 7a980ec..d004b63 100644
+--- a/drivers/input/touchscreen/raydium_mmi/Kbuild
++++ b/drivers/input/touchscreen/raydium_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/raydium_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/raydium_mmi
+ 
+ obj-m := raydium_mmi.o
+ raydium_mmi-objs += raydium_i2c_ts.o
+diff --git a/drivers/input/touchscreen/sec_mmi/Kbuild b/drivers/input/touchscreen/sec_mmi/Kbuild
+index 27d0c32..14a55b4 100644
+--- a/drivers/input/touchscreen/sec_mmi/Kbuild
++++ b/drivers/input/touchscreen/sec_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ # EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/sec_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/sec_mmi
+ 
+ ifneq (,$(filter racer% burton%,$(TARGET_PRODUCT)))
+     EXTRA_CFLAGS += -DCONFIG_DRM_DYNAMIC_REFRESH_RATE
+diff --git a/drivers/input/touchscreen/stmicro_mmi/Kbuild b/drivers/input/touchscreen/stmicro_mmi/Kbuild
+index 409745f..5ecd3a8 100644
+--- a/drivers/input/touchscreen/stmicro_mmi/Kbuild
++++ b/drivers/input/touchscreen/stmicro_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we canss
+ # EXTRA_CFLAGS += -Wallss
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/stmicro_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/stmicro_mmi
+ 
+ obj-m := stmicro_mmi.o
+ stmicro_mmi-objs := fts.o fts_proc.o
+diff --git a/drivers/input/touchscreen/synaptics_mmi/Kbuild b/drivers/input/touchscreen/synaptics_mmi/Kbuild
+index 0cf9d2b..7c25a04 100644
+--- a/drivers/input/touchscreen/synaptics_mmi/Kbuild
++++ b/drivers/input/touchscreen/synaptics_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/synaptics_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/synaptics_mmi
+ 
+ synaptics_mmi-objs = synaptics_dsx_i2c.o
+ 
+diff --git a/drivers/input/touchscreen/synaptics_mmi_class/Kbuild b/drivers/input/touchscreen/synaptics_mmi_class/Kbuild
+index 9a84af8..1c5a52c 100644
+--- a/drivers/input/touchscreen/synaptics_mmi_class/Kbuild
++++ b/drivers/input/touchscreen/synaptics_mmi_class/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/synaptics_mmi_class
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/synaptics_mmi_class
+ 
+ ifneq ($(filter banks%, $(TARGET_PRODUCT)),)
+     EXTRA_CFLAGS += -DSOFTDEP_GPIO_PCAL6408
+diff --git a/drivers/input/touchscreen/synaptics_tcm2_mmi/Kbuild b/drivers/input/touchscreen/synaptics_tcm2_mmi/Kbuild
+index 95d3818..a4baf61 100644
+--- a/drivers/input/touchscreen/synaptics_tcm2_mmi/Kbuild
++++ b/drivers/input/touchscreen/synaptics_tcm2_mmi/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+ EXTRA_CFLAGS += \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/synaptics_tcm2_mmi \
+-                -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/synaptics_tcm2_mmi/tcm
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/synaptics_tcm2_mmi \
++                -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/synaptics_tcm2_mmi/tcm
+ 
+ obj-m := synaptics_v2_mmi.o
+ synaptics_v2_mmi-objs := \
+diff --git a/drivers/input/touchscreen/synaptics_tcm_mmi/Kbuild b/drivers/input/touchscreen/synaptics_tcm_mmi/Kbuild
+index 8be46f2..f581625 100644
+--- a/drivers/input/touchscreen/synaptics_tcm_mmi/Kbuild
++++ b/drivers/input/touchscreen/synaptics_tcm_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/input/touchscreen/synaptics_tcm_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/synaptics_tcm_mmi
+ 
+ obj-m += synaptics_tcm_spi.o
+ obj-m += synaptics_tcm_i2c.o
+diff --git a/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_bus/Kbuild b/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_bus/Kbuild
+index e7f7c8e..ef233e0 100644
+--- a/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_bus/Kbuild
++++ b/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_bus/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/synaptics_tcm_mmi_v2
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/synaptics_tcm_mmi_v2
+ 
+ ifneq ($(filter m y,$(USE_TOUCHSCREEN_MMI_I2C)),)
+     obj-m += synaptics_i2c.o
+diff --git a/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_core/Kbuild b/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_core/Kbuild
+index ee1274c..5b07648 100644
+--- a/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_core/Kbuild
++++ b/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_core/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/synaptics_tcm_mmi_v2
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/synaptics_tcm_mmi_v2
+ 
+ obj-m += synaptics_core_module.o
+ 
+diff --git a/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_extmodules/Kbuild b/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_extmodules/Kbuild
+index a061f18..959c5fb 100644
+--- a/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_extmodules/Kbuild
++++ b/drivers/input/touchscreen/synaptics_tcm_mmi_v2/synaptics_extmodules/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/input/touchscreen/synaptics_tcm_mmi_v2
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/input/touchscreen/synaptics_tcm_mmi_v2
+ 
+ obj-m += synaptics_device.o
+ obj-m += synaptics_diagnostics.o
+diff --git a/drivers/input/touchscreen/touchscreen_mmi/Kbuild b/drivers/input/touchscreen/touchscreen_mmi/Kbuild
+index e8c260f..bde3e7b 100644
+--- a/drivers/input/touchscreen/touchscreen_mmi/Kbuild
++++ b/drivers/input/touchscreen/touchscreen_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y, $(CONFIG_PANEL_NOTIFICATIONS)),)
+ 	EXTRA_CFLAGS += -DCONFIG_PANEL_NOTIFICATIONS
+diff --git a/drivers/input/touchscreen/zinitix_ztw62x_mmi/Kbuild b/drivers/input/touchscreen/zinitix_ztw62x_mmi/Kbuild
+index d1e7a7e..0b3d49b 100644
+--- a/drivers/input/touchscreen/zinitix_ztw62x_mmi/Kbuild
++++ b/drivers/input/touchscreen/zinitix_ztw62x_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m := zinitix_ztw62x_mmi.o
+ 
+diff --git a/drivers/leds/Kbuild b/drivers/leds/Kbuild
+index eb1a7d0..923b84f 100755
+--- a/drivers/leds/Kbuild
++++ b/drivers/leds/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ 
+ obj-m += leds-indicator-pwm.o
+diff --git a/drivers/leds/aw2033/Kbuild b/drivers/leds/aw2033/Kbuild
+index 5091ce3..9cc0b55 100755
+--- a/drivers/leds/aw2033/Kbuild
++++ b/drivers/leds/aw2033/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ 
+ obj-m += leds_aw2033.o
+diff --git a/drivers/leds/trigger/Kbuild b/drivers/leds/trigger/Kbuild
+index 1983f4f..a09bd0f 100644
+--- a/drivers/leds/trigger/Kbuild
++++ b/drivers/leds/trigger/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ 
+ obj-m += ledtrig-sol.o
+diff --git a/drivers/media/platform/msm/camera/cam_sensor_module/cam_cci/Kbuild b/drivers/media/platform/msm/camera/cam_sensor_module/cam_cci/Kbuild
+index 0be27cd..842dbe6 100644
+--- a/drivers/media/platform/msm/camera/cam_sensor_module/cam_cci/Kbuild
++++ b/drivers/media/platform/msm/camera/cam_sensor_module/cam_cci/Kbuild
+@@ -23,7 +23,7 @@ else
+ endif
+ 
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(KERNEL_CAMERA_DRIVER_PATH)/cam_utils
+ EXTRA_CFLAGS += -I$(KERNEL_CAMERA_DRIVER_PATH)/cam_cpas/include
+ EXTRA_CFLAGS += -I$(KERNEL_CAMERA_DRIVER_PATH)/cam_sensor_module/cam_sensor_io
+diff --git a/drivers/misc/Kbuild b/drivers/misc/Kbuild
+index e49d268..63400c8 100644
+--- a/drivers/misc/Kbuild
++++ b/drivers/misc/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ cirrus_cs40l2x-objs = cs40l2x.o cs40l2x-tables.o
+ obj-m += cirrus_cs40l2x.o
+diff --git a/drivers/misc/abov/Kbuild b/drivers/misc/abov/Kbuild
+index 8495959..6f8df87 100644
+--- a/drivers/misc/abov/Kbuild
++++ b/drivers/misc/abov/Kbuild
+@@ -3,7 +3,7 @@ KERNEL_DIR_PATH = $(shell find $(TOP)/kernel/ -name "msm-*" | head -1 | grep -i
+ 
+ KERNEL_VERSION_NAME = $(shell basename $(KERNEL_DIR_PATH))
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq (,$(KERNEL_DIR_PATH))
+         EXTRA_CFLAGS += -I$(TOP)/kernel/$(KERNEL_VERSION_NAME)/drivers/base
+diff --git a/drivers/misc/abov_a96t/Kbuild b/drivers/misc/abov_a96t/Kbuild
+index c01e49f..50e8015 100644
+--- a/drivers/misc/abov_a96t/Kbuild
++++ b/drivers/misc/abov_a96t/Kbuild
+@@ -3,7 +3,7 @@ KERNEL_DIR_PATH = $(shell find $(TOP)/kernel/ -name "msm-*" | head -1 | grep -i
+ 
+ KERNEL_VERSION_NAME = $(shell basename $(KERNEL_DIR_PATH))
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq (,$(KERNEL_DIR_PATH))
+         EXTRA_CFLAGS += -I$(TOP)/kernel/$(KERNEL_VERSION_NAME)/drivers/base
+diff --git a/drivers/misc/abov_mmi_overlay/Kbuild b/drivers/misc/abov_mmi_overlay/Kbuild
+index ab286a7..f2e962f 100644
+--- a/drivers/misc/abov_mmi_overlay/Kbuild
++++ b/drivers/misc/abov_mmi_overlay/Kbuild
+@@ -3,7 +3,7 @@ KERNEL_DIR_PATH = $(shell find $(TOP)/kernel/ -name "msm-*" | head -1 | grep -i
+ 
+ KERNEL_VERSION_NAME = $(shell basename $(KERNEL_DIR_PATH))
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq (,$(KERNEL_DIR_PATH))
+         EXTRA_CFLAGS += -I$(TOP)/kernel/$(KERNEL_VERSION_NAME)/drivers/base
+diff --git a/drivers/misc/abov_mmi_overlay_7ch/Kbuild b/drivers/misc/abov_mmi_overlay_7ch/Kbuild
+index 69fa395..19d1f9e 100644
+--- a/drivers/misc/abov_mmi_overlay_7ch/Kbuild
++++ b/drivers/misc/abov_mmi_overlay_7ch/Kbuild
+@@ -3,7 +3,7 @@ KERNEL_DIR_PATH = $(shell find $(TOP)/kernel/ -name "msm-*" | head -1 | grep -i
+ 
+ KERNEL_VERSION_NAME = $(shell basename $(KERNEL_DIR_PATH))
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq (,$(KERNEL_DIR_PATH))
+         EXTRA_CFLAGS += -I$(TOP)/kernel/$(KERNEL_VERSION_NAME)/drivers/base
+diff --git a/drivers/misc/aw9610x/Kbuild b/drivers/misc/aw9610x/Kbuild
+index e1ad7ee..4c7069b 100644
+--- a/drivers/misc/aw9610x/Kbuild
++++ b/drivers/misc/aw9610x/Kbuild
+@@ -6,7 +6,7 @@ KERNEL_PLATFORM_PATH = $(shell find $(ANDROID_BUILD_TOP) -maxdepth 1 -name "kern
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_AW9610X_POWER_SUPPLY_ONLINE)),)
+ 	EXTRA_CFLAGS += -DCONFIG_USE_POWER_SUPPLY_ONLINE
+@@ -18,11 +18,11 @@ endif
+ 
+ 
+ ifneq (,$(KERNEL_DIR_PATH))
+-        EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel/$(KERNEL_VERSION_NAME)/drivers/base
++        EXTRA_CFLAGS += -I$(KERNEL_SRC)/drivers/base
+ else ifneq (,$(KERNEL_PLATFORM_PATH))
+         EXTRA_CFLAGS += -I$(KERNEL_PLATFORM_PATH)/common/drivers/base
+ else
+-        EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel/drivers/base
++        EXTRA_CFLAGS += -I$(KERNEL_SRC)/drivers/base
+ endif
+ 
+ KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../../sensors/$(GKI_OBJ_MODULE_DIR)/Module.symvers
+diff --git a/drivers/misc/awinic/aw8624/Kbuild b/drivers/misc/awinic/aw8624/Kbuild
+index 8cf9a56..c1134fa 100644
+--- a/drivers/misc/awinic/aw8624/Kbuild
++++ b/drivers/misc/awinic/aw8624/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += aw8624.o
+diff --git a/drivers/misc/awinic/aw862x/Kbuild b/drivers/misc/awinic/aw862x/Kbuild
+index f993301..1d7e73c 100644
+--- a/drivers/misc/awinic/aw862x/Kbuild
++++ b/drivers/misc/awinic/aw862x/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/misc/awinic/aw862x
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/misc/awinic/aw862x
+ 
+ obj-m += aw862x.o
+ 
+diff --git a/drivers/misc/awinic/aw862x_haptic_nv/Kbuild b/drivers/misc/awinic/aw862x_haptic_nv/Kbuild
+index a7b8ee9..b2fb144 100644
+--- a/drivers/misc/awinic/aw862x_haptic_nv/Kbuild
++++ b/drivers/misc/awinic/aw862x_haptic_nv/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/misc/awinic/aw862x_haptic_nv
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/misc/awinic/aw862x_haptic_nv
+ 
+ ifneq (,$(filter kobe%, $(TARGET_PRODUCT)))
+        EXTRA_CFLAGS += -DFCNT_VIBRATION
+diff --git a/drivers/misc/awinic/aw862x_haptic_nv_v1/Kbuild b/drivers/misc/awinic/aw862x_haptic_nv_v1/Kbuild
+index 3e3ac01..55cc19e 100644
+--- a/drivers/misc/awinic/aw862x_haptic_nv_v1/Kbuild
++++ b/drivers/misc/awinic/aw862x_haptic_nv_v1/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/misc/awinic/aw862x_haptic_nv_v1
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/misc/awinic/aw862x_haptic_nv_v1
+ 
+ obj-m += aw862x_haptic_nv_v1.o
+ 
+diff --git a/drivers/misc/awinic/aw8695/Kbuild b/drivers/misc/awinic/aw8695/Kbuild
+index 20db7c5..f63d2f3 100644
+--- a/drivers/misc/awinic/aw8695/Kbuild
++++ b/drivers/misc/awinic/aw8695/Kbuild
+@@ -8,6 +8,6 @@ ifneq ($(filter y,$(CONFIG_AW8965_VIBRATOR_SHORT_WAV_ENABLE)),)
+ endif
+ 
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += aw8695.o
+diff --git a/drivers/misc/awinic/aw8697/Kbuild b/drivers/misc/awinic/aw8697/Kbuild
+index 4cb9b63..17bd63e 100644
+--- a/drivers/misc/awinic/aw8697/Kbuild
++++ b/drivers/misc/awinic/aw8697/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_INPUT_AWINIC_HAPTIC)),)
+ 	EXTRA_CFLAGS += -DCONFIG_INPUT_AWINIC_HAPTIC
+diff --git a/drivers/misc/awinic/aw869x/Kbuild b/drivers/misc/awinic/aw869x/Kbuild
+index 1f6fbda..1c2973c 100644
+--- a/drivers/misc/awinic/aw869x/Kbuild
++++ b/drivers/misc/awinic/aw869x/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_INPUT_AWINIC_HAPTIC)),)
+ 	EXTRA_CFLAGS += -DCONFIG_INPUT_AWINIC_HAPTIC
+diff --git a/drivers/misc/awinic/aw869xx/Kbuild b/drivers/misc/awinic/aw869xx/Kbuild
+index fdd4ffd..808101f 100644
+--- a/drivers/misc/awinic/aw869xx/Kbuild
++++ b/drivers/misc/awinic/aw869xx/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += aw869xx.o
+diff --git a/drivers/misc/awinic/haptic_hv/Kbuild b/drivers/misc/awinic/haptic_hv/Kbuild
+index 9836783..78c1298 100644
+--- a/drivers/misc/awinic/haptic_hv/Kbuild
++++ b/drivers/misc/awinic/haptic_hv/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_INPUT_AWINIC_HAPTIC)),)
+ 	EXTRA_CFLAGS += -DCONFIG_INPUT_AWINIC_HAPTIC
+diff --git a/drivers/misc/awinic/haptic_hv_qcom_v1.10.0/Kbuild b/drivers/misc/awinic/haptic_hv_qcom_v1.10.0/Kbuild
+index 70e2ef8..657133e 100644
+--- a/drivers/misc/awinic/haptic_hv_qcom_v1.10.0/Kbuild
++++ b/drivers/misc/awinic/haptic_hv_qcom_v1.10.0/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m	+= aw_haptic_hv_v1_10.o
+ aw_haptic_hv_v1_10-objs	:= aw869x.o aw869xx.o aw8671x.o aw8672x.o aw8692x.o aw8693x.o aw8693xs.o haptic_hv.o
+diff --git a/drivers/misc/awinic/haptic_hv_qcom_v1.5.0/Kbuild b/drivers/misc/awinic/haptic_hv_qcom_v1.5.0/Kbuild
+index 7957bc4..8d4b3fb 100644
+--- a/drivers/misc/awinic/haptic_hv_qcom_v1.5.0/Kbuild
++++ b/drivers/misc/awinic/haptic_hv_qcom_v1.5.0/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += aw_haptic_hv_v1_5.o
+ aw_haptic_hv_v1_5-objs := aw869x.o aw869xx.o aw8671x.o aw8672x.o aw8692x.o aw8693x.o haptic_hv.o
+diff --git a/drivers/misc/awinic/sarsensor/Kbuild b/drivers/misc/awinic/sarsensor/Kbuild
+index 07ebc7b..c1a9b36 100644
+--- a/drivers/misc/awinic/sarsensor/Kbuild
++++ b/drivers/misc/awinic/sarsensor/Kbuild
+@@ -3,9 +3,9 @@
+ #KERNEL_DIR_PATH = $(shell find $(TOP)/kernel* -type d -name  "kernel-*" | head -1)
+ KERNEL_VERSION_NAME = $(shell basename $(KERNEL_DIR_PATH))
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include/linux/input/awinic
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/$(KERNEL_VERSION_NAME)/drivers/base
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include/linux/input/awinic
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/drivers/base
+ 
+ ifneq ($(filter m y,$(CONFIG_AW96XX_POWER_SUPPLY_ONLINE)),)
+ 	EXTRA_CFLAGS += -DCONFIG_USE_POWER_SUPPLY_ONLINE
+diff --git a/drivers/misc/cypress/Kbuild b/drivers/misc/cypress/Kbuild
+index 8404ac5..bcfd208 100644
+--- a/drivers/misc/cypress/Kbuild
++++ b/drivers/misc/cypress/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ EXTRA_CFLAGS += -DCY8C40xx_FAMILY
+ KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../../sensors/Module.symvers
+diff --git a/drivers/misc/drv2624_mmi/Kbuild b/drivers/misc/drv2624_mmi/Kbuild
+index dd30c7f..08b8881 100644
+--- a/drivers/misc/drv2624_mmi/Kbuild
++++ b/drivers/misc/drv2624_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifeq ($(filter m y, $(CONFIG_INPUT_DRV2624_HAPTICS)),)
+ obj-m += drv2624_mmi.o
+diff --git a/drivers/misc/drv8424/Kbuild b/drivers/misc/drv8424/Kbuild
+index a86fd17..9fb2a85 100644
+--- a/drivers/misc/drv8424/Kbuild
++++ b/drivers/misc/drv8424/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ #ifeq ($(CONFIG_LIBER_DTB), y)
+ #EXTRA_CFLAGS += -DCONFIG_USE_HW_CLK
+diff --git a/drivers/misc/dts201a/Kbuild b/drivers/misc/dts201a/Kbuild
+index 8a5c19e..33fea3e 100644
+--- a/drivers/misc/dts201a/Kbuild
++++ b/drivers/misc/dts201a/Kbuild
+@@ -31,7 +31,7 @@ EXTRA_CFLAGS += -I$(KERNEL_CAMERA_DRIVER_PATH)/cam_req_mgr
+ EXTRA_CFLAGS += -I$(KERNEL_CAMERA_DRIVER_PATH)/cam_smmu
+ endif
+ 
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -Wall
+ KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../../sensors/Module.symvers
+ dts201a_mmi-y := dts201a.o dts201a-cci.o
+diff --git a/drivers/misc/hall/Kbuild b/drivers/misc/hall/Kbuild
+index 40da20c..cbc7c3f 100644
+--- a/drivers/misc/hall/Kbuild
++++ b/drivers/misc/hall/Kbuild
+@@ -6,7 +6,7 @@ KERNEL_PLATFORM_PATH = $(shell find $(ANDROID_BUILD_TOP) -maxdepth 1 -name "kern
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_HALL_PASSIVE_PEN)),)
+ 	EXTRA_CFLAGS += -DCONFIG_HALL_PASSIVE_PEN
+diff --git a/drivers/misc/ldo_vibrator_mmi/Kbuild b/drivers/misc/ldo_vibrator_mmi/Kbuild
+index ef98f41..bfa0c63 100644
+--- a/drivers/misc/ldo_vibrator_mmi/Kbuild
++++ b/drivers/misc/ldo_vibrator_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_VIBRATOR_NOISE_CAMERA)),)
+ 	EXTRA_CFLAGS += -DCONFIG_VIBRATOR_NOISE_CAMERA
+diff --git a/drivers/misc/mmi_lpm_dbg/Kbuild b/drivers/misc/mmi_lpm_dbg/Kbuild
+index 5df8159..34a5e5b 100644
+--- a/drivers/misc/mmi_lpm_dbg/Kbuild
++++ b/drivers/misc/mmi_lpm_dbg/Kbuild
+@@ -5,7 +5,7 @@ endif
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel-5.10/include
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
+ 		-I$(ANDROID_BUILD_TOP)/kernel_device_modules-6.1/include \
+ 
+ # KBUILD_EXTRA_SYMBOLS += $(CURDIR)/../../kernel/msm-$(MODULE_KERNEL_VERSION)/Module.symvers
+diff --git a/drivers/misc/mmi_sigprint/Kbuild b/drivers/misc/mmi_sigprint/Kbuild
+index 527d007..71eba78 100644
+--- a/drivers/misc/mmi_sigprint/Kbuild
++++ b/drivers/misc/mmi_sigprint/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m = mmi_sigprint.o
+diff --git a/drivers/misc/mmi_stow/Kbuild b/drivers/misc/mmi_stow/Kbuild
+index b993d9d..e5b955a 100644
+--- a/drivers/misc/mmi_stow/Kbuild
++++ b/drivers/misc/mmi_stow/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += mmi_stow.o
+diff --git a/drivers/misc/mmi_sys_temp/Kbuild b/drivers/misc/mmi_sys_temp/Kbuild
+index d676833..f33786b 100644
+--- a/drivers/misc/mmi_sys_temp/Kbuild
++++ b/drivers/misc/mmi_sys_temp/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += mmi_sys_temp.o
+diff --git a/drivers/misc/pen/Kbuild b/drivers/misc/pen/Kbuild
+index 07673f2..0814a0e 100644
+--- a/drivers/misc/pen/Kbuild
++++ b/drivers/misc/pen/Kbuild
+@@ -6,7 +6,7 @@ KERNEL_PLATFORM_PATH = $(shell find $(ANDROID_BUILD_TOP) -maxdepth 1 -name "kern
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../../sensors/$(GKI_OBJ_MODULE_DIR)/Module.symvers
+ 
+diff --git a/drivers/misc/qrng_hwrng/Kbuild b/drivers/misc/qrng_hwrng/Kbuild
+index 2e3d28b..3860686 100755
+--- a/drivers/misc/qrng_hwrng/Kbuild
++++ b/drivers/misc/qrng_hwrng/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ EXTRA_CFLAGS += -DCONFIG_HW_RANDOM_IDQ250C2_TIMER
+ EXTRA_CFLAGS += -DCONFIG_HW_RANDOM_IDQ250C2_MISC_DEVICE
+diff --git a/drivers/misc/regulator_vibrator_mmi/Kbuild b/drivers/misc/regulator_vibrator_mmi/Kbuild
+index 11f504c..f0dd719 100644
+--- a/drivers/misc/regulator_vibrator_mmi/Kbuild
++++ b/drivers/misc/regulator_vibrator_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_VIBRATOR_NOISE_CAMERA)),)
+         EXTRA_CFLAGS += -DCONFIG_VIBRATOR_NOISE_CAMERA
+diff --git a/drivers/misc/stk501xx/Kbuild b/drivers/misc/stk501xx/Kbuild
+index 7e71359..2591b3c 100644
+--- a/drivers/misc/stk501xx/Kbuild
++++ b/drivers/misc/stk501xx/Kbuild
+@@ -1,7 +1,7 @@
+ KERNEL_VERSION_NAME = $(shell basename $(KERNEL_DIR_PATH))
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/$(KERNEL_VERSION_NAME)/drivers/base
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/drivers/base
+ 
+ ifneq ($(filter m y,$(CONFIG_STK501xx_USB_CAL)),)
+     EXTRA_CFLAGS += -DCONFIG_CAPSENSE_USB_CAL
+diff --git a/drivers/misc/suspend_marker/Kbuild b/drivers/misc/suspend_marker/Kbuild
+index d443125..2989091 100644
+--- a/drivers/misc/suspend_marker/Kbuild
++++ b/drivers/misc/suspend_marker/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += suspend_marker.o
+diff --git a/drivers/misc/sx9310/Kbuild b/drivers/misc/sx9310/Kbuild
+index 7c4b935..31c7145 100644
+--- a/drivers/misc/sx9310/Kbuild
++++ b/drivers/misc/sx9310/Kbuild
+@@ -4,7 +4,7 @@ KERNEL_VERSION_NAME = $(shell basename $(KERNEL_DIR_PATH))
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq (,$(KERNEL_DIR_PATH))
+         EXTRA_CFLAGS += -I$(TOP)/kernel/$(KERNEL_VERSION_NAME)/drivers/base
+diff --git a/drivers/misc/sx9325/Kbuild b/drivers/misc/sx9325/Kbuild
+index 0d68706..848df5f 100644
+--- a/drivers/misc/sx9325/Kbuild
++++ b/drivers/misc/sx9325/Kbuild
+@@ -4,7 +4,7 @@ KERNEL_VERSION_NAME = $(shell basename $(KERNEL_DIR_PATH))
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq (,$(KERNEL_DIR_PATH))
+         EXTRA_CFLAGS += -I$(TOP)/kernel/$(KERNEL_VERSION_NAME)/drivers/base
+diff --git a/drivers/misc/sx933x/Kbuild b/drivers/misc/sx933x/Kbuild
+index 40ec04a..f904749 100644
+--- a/drivers/misc/sx933x/Kbuild
++++ b/drivers/misc/sx933x/Kbuild
+@@ -6,7 +6,7 @@ KERNEL_PLATFORM_PATH = $(shell find $(ANDROID_BUILD_TOP) -maxdepth 1 -name "kern
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_SX933X_USB_CAL)),)
+ 	EXTRA_CFLAGS += -DCONFIG_CAPSENSE_USB_CAL
+@@ -60,11 +60,11 @@ EXTRA_CFLAGS += -DCONFIG_CAPSENSE_USB_CAL
+ endif
+ 
+ ifneq (,$(KERNEL_DIR_PATH))
+-        EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel/$(KERNEL_VERSION_NAME)/drivers/base
++        EXTRA_CFLAGS += -I$(KERNEL_SRC)/drivers/base
+ else ifneq (,$(KERNEL_PLATFORM_PATH))
+         EXTRA_CFLAGS += -I$(KERNEL_PLATFORM_PATH)/common/drivers/base
+ else
+-        EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel/drivers/base
++        EXTRA_CFLAGS += -I$(KERNEL_SRC)/drivers/base
+ endif
+ KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../../sensors/Module.symvers
+ 
+diff --git a/drivers/misc/sx937x/Kbuild b/drivers/misc/sx937x/Kbuild
+index 0561d5b..66eca11 100644
+--- a/drivers/misc/sx937x/Kbuild
++++ b/drivers/misc/sx937x/Kbuild
+@@ -6,7 +6,7 @@ KERNEL_PLATFORM_PATH = $(shell find $(ANDROID_BUILD_TOP) -maxdepth 1 -name "kern
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_SX937X_USB_CAL)),)
+ 	EXTRA_CFLAGS += -DCONFIG_CAPSENSE_USB_CAL
+@@ -25,11 +25,11 @@ EXTRA_CFLAGS += -DCONFIG_CAPSENSE_USB_CAL
+ endif
+ 
+ ifneq (,$(KERNEL_DIR_PATH))
+-        EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel/$(KERNEL_VERSION_NAME)/drivers/base
++        EXTRA_CFLAGS += -I$(KERNEL_SRC)/drivers/base
+ else ifneq (,$(KERNEL_PLATFORM_PATH))
+         EXTRA_CFLAGS += -I$(KERNEL_PLATFORM_PATH)/common/drivers/base
+ else
+-        EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel/drivers/base
++        EXTRA_CFLAGS += -I$(KERNEL_SRC)/drivers/base
+ endif
+ 
+ KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../../sensors/$(GKI_OBJ_MODULE_DIR)/Module.symvers
+diff --git a/drivers/misc/sx937x_multi/Kbuild b/drivers/misc/sx937x_multi/Kbuild
+index ff6fdec..d0f2006 100644
+--- a/drivers/misc/sx937x_multi/Kbuild
++++ b/drivers/misc/sx937x_multi/Kbuild
+@@ -6,7 +6,7 @@ KERNEL_PLATFORM_PATH = $(shell find $(ANDROID_BUILD_TOP) -maxdepth 1 -name "kern
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ 
+ KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../../sensors/$(GKI_OBJ_MODULE_DIR)/Module.symvers
+diff --git a/drivers/misc/tps61280/Kbuild b/drivers/misc/tps61280/Kbuild
+index f2883bf..7391f46 100644
+--- a/drivers/misc/tps61280/Kbuild
++++ b/drivers/misc/tps61280/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += tps61280.o
+diff --git a/drivers/misc/tps61280a/Kbuild b/drivers/misc/tps61280a/Kbuild
+index fc12070..f16e1ff 100644
+--- a/drivers/misc/tps61280a/Kbuild
++++ b/drivers/misc/tps61280a/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += tps61280a.o
+diff --git a/drivers/misc/utag/Kbuild b/drivers/misc/utag/Kbuild
+index 89c6baf..e38bb1a 100644
+--- a/drivers/misc/utag/Kbuild
++++ b/drivers/misc/utag/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m = utags.o
+diff --git a/drivers/mmi_annotate/Kbuild b/drivers/mmi_annotate/Kbuild
+index f554a4e..bfa21a5 100644
+--- a/drivers/mmi_annotate/Kbuild
++++ b/drivers/mmi_annotate/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += mmi_annotate.o
+\ No newline at end of file
+diff --git a/drivers/mmi_info/Kbuild b/drivers/mmi_info/Kbuild
+index 4a3f1a0..b24c4e8 100644
+--- a/drivers/mmi_info/Kbuild
++++ b/drivers/mmi_info/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ mmi_info-objs += mmi_storage_info.o
+ mmi_info-objs += mmi_ram_info.o
+diff --git a/drivers/mmi_muc_uart/Kbuild b/drivers/mmi_muc_uart/Kbuild
+index 5d31b22..d743783 100644
+--- a/drivers/mmi_muc_uart/Kbuild
++++ b/drivers/mmi_muc_uart/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ mmi_muc_uart-objs += mmi_uart.o
+ mmi_muc_uart-objs += mmi_char.o
+diff --git a/drivers/mmi_qcom_minidump/Kbuild b/drivers/mmi_qcom_minidump/Kbuild
+index 023fa8a..2ab07a1 100644
+--- a/drivers/mmi_qcom_minidump/Kbuild
++++ b/drivers/mmi_qcom_minidump/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += mmi_qcom_minidump.o
+diff --git a/drivers/mmi_relay/Kbuild b/drivers/mmi_relay/Kbuild
+index 12e00ae..5523581 100644
+--- a/drivers/mmi_relay/Kbuild
++++ b/drivers/mmi_relay/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += mmi_relay.o
+diff --git a/drivers/moto_binder/Kbuild b/drivers/moto_binder/Kbuild
+index 930f06b..3317d54 100644
+--- a/drivers/moto_binder/Kbuild
++++ b/drivers/moto_binder/Kbuild
+@@ -4,9 +4,9 @@ endif
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel_platform/common
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/moto_binder
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/moto_binder
+ 
+ 
+ obj-m += moto_binder.o
+diff --git a/drivers/moto_f_diag/Kbuild b/drivers/moto_f_diag/Kbuild
+index 38c7c2f..73b9464 100644
+--- a/drivers/moto_f_diag/Kbuild
++++ b/drivers/moto_f_diag/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ moto_f_diag-objs += tty_diag.o
+ moto_f_diag-objs += f_diag.o
+diff --git a/drivers/moto_f_mass_storage/Kbuild b/drivers/moto_f_mass_storage/Kbuild
+index f4d67d1..95fb607 100644
+--- a/drivers/moto_f_mass_storage/Kbuild
++++ b/drivers/moto_f_mass_storage/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ moto_f_mass_storage-objs += f_mass_storage.o storage_common.o
+ obj-m += moto_f_mass_storage.o
+diff --git a/drivers/moto_f_usbnet/Kbuild b/drivers/moto_f_usbnet/Kbuild
+index 331c29b..8397a05 100644
+--- a/drivers/moto_f_usbnet/Kbuild
++++ b/drivers/moto_f_usbnet/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ moto_f_usbnet-objs += f_usbnet.o
+ obj-m += moto_f_usbnet.o
+diff --git a/drivers/moto_mm/Kbuild b/drivers/moto_mm/Kbuild
+index e7c1e5c..67f4af1 100644
+--- a/drivers/moto_mm/Kbuild
++++ b/drivers/moto_mm/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += moto_mm.o
+ 
+diff --git a/drivers/moto_mm/stat/mm606/Kbuild b/drivers/moto_mm/stat/mm606/Kbuild
+index 15fccf6..9b1a582 100644
+--- a/drivers/moto_mm/stat/mm606/Kbuild
++++ b/drivers/moto_mm/stat/mm606/Kbuild
+@@ -6,7 +6,7 @@ endif
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(srctree)
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel_platform/common
+ 
+diff --git a/drivers/moto_mmap_fault/Kbuild b/drivers/moto_mmap_fault/Kbuild
+index 5282f83..f019db4 100644
+--- a/drivers/moto_mmap_fault/Kbuild
++++ b/drivers/moto_mmap_fault/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += moto_mmap_fault.o
+diff --git a/drivers/moto_pm_vh/Kbuild b/drivers/moto_pm_vh/Kbuild
+index 6e8792b..29cf539 100644
+--- a/drivers/moto_pm_vh/Kbuild
++++ b/drivers/moto_pm_vh/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += moto_pm_vh.o
+diff --git a/drivers/moto_reboot_reason/Kbuild b/drivers/moto_reboot_reason/Kbuild
+index d85da06..ab19aea 100755
+--- a/drivers/moto_reboot_reason/Kbuild
++++ b/drivers/moto_reboot_reason/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += moto_reboot_reason.o
+diff --git a/drivers/moto_sched/Kbuild b/drivers/moto_sched/Kbuild
+index 75ee3d2..ad50674 100644
+--- a/drivers/moto_sched/Kbuild
++++ b/drivers/moto_sched/Kbuild
+@@ -4,12 +4,12 @@ endif
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel_platform/common
+ ifneq ($strip($(LINUX_KERNEL_VERSION)),)
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/$(LINUX_KERNEL_VERSION)
+ endif
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/moto_sched
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/moto_sched
+ 
+ ifneq ($(filter m y,$(CONFIG_MTK_SCHED_VIP_TASK)),)
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel-6.1
+diff --git a/drivers/moto_swap/Kbuild b/drivers/moto_swap/Kbuild
+index c7bdbb3..7dc1592 100644
+--- a/drivers/moto_swap/Kbuild
++++ b/drivers/moto_swap/Kbuild
+@@ -8,7 +8,7 @@ endif
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_HYBRIDSWAP_ZRAM)),)
+ EXTRA_CFLAGS += -DCONFIG_HYBRIDSWAP_ZRAM
+diff --git a/drivers/nfc/sec_nfc/Kbuild b/drivers/nfc/sec_nfc/Kbuild
+index 6493f04..11384c5 100644
+--- a/drivers/nfc/sec_nfc/Kbuild
++++ b/drivers/nfc/sec_nfc/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_SEC_NFC_PRODUCT_N5)),)
+ 	EXTRA_CFLAGS += -DCONFIG_SEC_NFC_PRODUCT_N5
+diff --git a/drivers/nfc/sn1xx/Kbuild b/drivers/nfc/sn1xx/Kbuild
+index 5426c69..01c95d0 100644
+--- a/drivers/nfc/sn1xx/Kbuild
++++ b/drivers/nfc/sn1xx/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m        += nfc_i2c.o
+ nfc_i2c-objs:= nfc_common.o nfc_i2c_drv.o
+diff --git a/drivers/nfc/sn2xx/Kbuild b/drivers/nfc/sn2xx/Kbuild
+index 645e1e8..e9e25b4 100644
+--- a/drivers/nfc/sn2xx/Kbuild
++++ b/drivers/nfc/sn2xx/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m        += nfc_nci.o
+ nfc_nci-objs:= nfc_common.o nfc_i2c_drv.o ese_cold_reset.o
+diff --git a/drivers/nfc/st21nfc/Kbuild b/drivers/nfc/st21nfc/Kbuild
+index 93434bd..159d536 100644
+--- a/drivers/nfc/st21nfc/Kbuild
++++ b/drivers/nfc/st21nfc/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter ctwo% arcfox% eiger%, $(TARGET_PRODUCT)),)
+         EXTRA_CFLAGS += -DQCOM_NFC_CLK_REQ_WAKE_SET
+diff --git a/drivers/power/adsp_glink_charger/Kbuild b/drivers/power/adsp_glink_charger/Kbuild
+index d700aff..c26f01d 100755
+--- a/drivers/power/adsp_glink_charger/Kbuild
++++ b/drivers/power/adsp_glink_charger/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_charger
+ 
+ ifneq ($(filter m y,$(CONFIG_WIRELESS_CPS4035B)),)
+ 	EXTRA_CFLAGS += -DWIRELESS_CPS4035B
+diff --git a/drivers/power/bm_adsp_ulog/Kbuild b/drivers/power/bm_adsp_ulog/Kbuild
+index 3272e83..d8d6623 100755
+--- a/drivers/power/bm_adsp_ulog/Kbuild
++++ b/drivers/power/bm_adsp_ulog/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += bm_adsp_ulog.o
+ 
+diff --git a/drivers/power/bq25890_mmi/Kbuild b/drivers/power/bq25890_mmi/Kbuild
+index 84dd5fa..32bb098 100755
+--- a/drivers/power/bq25890_mmi/Kbuild
++++ b/drivers/power/bq25890_mmi/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += bq25890_charger_mmi.o
+diff --git a/drivers/power/bq2589x_chg_mmi/Kbuild b/drivers/power/bq2589x_chg_mmi/Kbuild
+index d408238..19d046f 100644
+--- a/drivers/power/bq2589x_chg_mmi/Kbuild
++++ b/drivers/power/bq2589x_chg_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/bq2589x_chg_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/bq2589x_chg_mmi
+ 
+ obj-m += bq2589x_charger.o
+ 
+diff --git a/drivers/power/bq2597x_mmi/Kbuild b/drivers/power/bq2597x_mmi/Kbuild
+index 8fbfa78..462333a 100644
+--- a/drivers/power/bq2597x_mmi/Kbuild
++++ b/drivers/power/bq2597x_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/power/bq2597x_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/bq2597x_mmi
+ 
+ obj-m += bq2597x_mmi.o
+ 
+diff --git a/drivers/power/bq2597x_mmi_iio/Kbuild b/drivers/power/bq2597x_mmi_iio/Kbuild
+index 4a5406b..290a347 100644
+--- a/drivers/power/bq2597x_mmi_iio/Kbuild
++++ b/drivers/power/bq2597x_mmi_iio/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/bq2597x_mmi_iio
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/bq2597x_mmi_iio
+ 
+ obj-m += bq2597x_mmi_iio.o
+ 
+diff --git a/drivers/power/bq25980_mmi_iio/Kbuild b/drivers/power/bq25980_mmi_iio/Kbuild
+index ab15aa9..e14af60 100644
+--- a/drivers/power/bq25980_mmi_iio/Kbuild
++++ b/drivers/power/bq25980_mmi_iio/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/bq25980_mmi_iio
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/bq25980_mmi_iio
+ 
+ ifneq ($(filter m y,$(CONFIG_MMI_BQ25980_BULK_READ)),)
+         EXTRA_CFLAGS += -DCONFIG_MMI_BQ25980_BULK_READ
+diff --git a/drivers/power/bq27426_fg_mmi/Kbuild b/drivers/power/bq27426_fg_mmi/Kbuild
+index 7f4eb27..e1580fc 100644
+--- a/drivers/power/bq27426_fg_mmi/Kbuild
++++ b/drivers/power/bq27426_fg_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/bq27426_fg_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/bq27426_fg_mmi
+ 
+ ifneq ($(filter m y,$(CONFIG_ATL_4000MAH_8A_BATTERY_PROFILE)),)
+ 	EXTRA_CFLAGS += -DATL_4000MAH_8A_BATTERY_PROFILE
+diff --git a/drivers/power/cps4019_wls_charger/Kbuild b/drivers/power/cps4019_wls_charger/Kbuild
+index d427e8a..ba34800 100644
+--- a/drivers/power/cps4019_wls_charger/Kbuild
++++ b/drivers/power/cps4019_wls_charger/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/drivers/power/cps4019_wls_charger
+ 
+ obj-m += cps4019_wls_charger.o
+diff --git a/drivers/power/cw2217b_fg_mmi/Kbuild b/drivers/power/cw2217b_fg_mmi/Kbuild
+index a84af03..ce69a2c 100644
+--- a/drivers/power/cw2217b_fg_mmi/Kbuild
++++ b/drivers/power/cw2217b_fg_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/drivers/power/cw2217b_fg_mmi
+ 
+ ifneq ($(filter m y,$(CONFIG_DYNAMIC_UPDATE_UI_FULL)),)
+diff --git a/drivers/power/fet-control/Kbuild b/drivers/power/fet-control/Kbuild
+index d95b919..b1a8838 100755
+--- a/drivers/power/fet-control/Kbuild
++++ b/drivers/power/fet-control/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/fet_control
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/fet_control
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += fet_control.o
+diff --git a/drivers/power/max170xx/Kbuild b/drivers/power/max170xx/Kbuild
+index fa5b3dc..bc9ea5a 100644
+--- a/drivers/power/max170xx/Kbuild
++++ b/drivers/power/max170xx/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += max170xx_battery_mmi.o
+diff --git a/drivers/power/mm8013c_fg_mmi/Kbuild b/drivers/power/mm8013c_fg_mmi/Kbuild
+index 66ea646..a93353a 100644
+--- a/drivers/power/mm8013c_fg_mmi/Kbuild
++++ b/drivers/power/mm8013c_fg_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/drivers/power/mm8013c_fg_mmi
+ 
+ mm8013c_fg_mmi-objs += mm8013c_battery.o
+diff --git a/drivers/power/mmi-smbcharger-iio/Kbuild b/drivers/power/mmi-smbcharger-iio/Kbuild
+index 049504d..2a9b50f 100755
+--- a/drivers/power/mmi-smbcharger-iio/Kbuild
++++ b/drivers/power/mmi-smbcharger-iio/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_MMI_BOOTCONFIG_SUPPORT)),)
+         EXTRA_CFLAGS += -DCONFIG_MMI_BOOTCONFIG_SUPPORT
+diff --git a/drivers/power/mmi_charger/Kbuild b/drivers/power/mmi_charger/Kbuild
+index 4740d68..a797716 100755
+--- a/drivers/power/mmi_charger/Kbuild
++++ b/drivers/power/mmi_charger/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_charger
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+     EXTRA_CFLAGS += -DMMI_GKI_API_ALLOWANCE
+diff --git a/drivers/power/mmi_charger/ext_charger/Kbuild b/drivers/power/mmi_charger/ext_charger/Kbuild
+index 19b07f6..ca90004 100755
+--- a/drivers/power/mmi_charger/ext_charger/Kbuild
++++ b/drivers/power/mmi_charger/ext_charger/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_charger
+ 
+ obj-m += ext_charger.o
+ 
+diff --git a/drivers/power/mmi_chg_tcmd/Kbuild b/drivers/power/mmi_chg_tcmd/Kbuild
+index 7138daf..f7e5dcf 100755
+--- a/drivers/power/mmi_chg_tcmd/Kbuild
++++ b/drivers/power/mmi_chg_tcmd/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += mmi_chg_tcmd.o
+diff --git a/drivers/power/mmi_discrete_charger/Kbuild b/drivers/power/mmi_discrete_charger/Kbuild
+index 7c14922..43cbb70 100644
+--- a/drivers/power/mmi_discrete_charger/Kbuild
++++ b/drivers/power/mmi_discrete_charger/Kbuild
+@@ -1,8 +1,8 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS +=	-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_charger
+-EXTRA_CFLAGS +=	-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_discrete_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS +=	-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_charger
++EXTRA_CFLAGS +=	-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_discrete_charger
+ 
+ obj-m += mmi_discrete_charger.o
+ mmi_discrete_charger-objs += mmi_discrete_charger_core.o
+diff --git a/drivers/power/mmi_discrete_turbo_charger/Kbuild b/drivers/power/mmi_discrete_turbo_charger/Kbuild
+index b6d3765..8cf0c9f 100644
+--- a/drivers/power/mmi_discrete_turbo_charger/Kbuild
++++ b/drivers/power/mmi_discrete_turbo_charger/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_discrete_turbo_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_discrete_turbo_charger
+ 
+ ifneq ($(filter m y,$(CONFIG_MMI_QC3P_WT6670_DETECTED)),)
+         EXTRA_CFLAGS += -DCONFIG_MMI_QC3P_WT6670_DETECTED
+diff --git a/drivers/power/mmi_glink_charger/Kbuild b/drivers/power/mmi_glink_charger/Kbuild
+index 6464f3c..60fb124 100755
+--- a/drivers/power/mmi_glink_charger/Kbuild
++++ b/drivers/power/mmi_glink_charger/Kbuild
+@@ -1,9 +1,9 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_glink_charger
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_glink_charger/device_glink
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_glink_charger/qti_glink_charger_v2
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_glink_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_glink_charger/device_glink
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_glink_charger/qti_glink_charger_v2
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+     EXTRA_CFLAGS += -DMMI_GKI_API_ALLOWANCE
+diff --git a/drivers/power/mmi_glink_charger/qti_glink_charger_v2/Kbuild b/drivers/power/mmi_glink_charger/qti_glink_charger_v2/Kbuild
+index 7de749f..9ed8141 100755
+--- a/drivers/power/mmi_glink_charger/qti_glink_charger_v2/Kbuild
++++ b/drivers/power/mmi_glink_charger/qti_glink_charger_v2/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += qti_glink_charger_v2.o
+ 
+diff --git a/drivers/power/mmi_lpd_mitigate/Kbuild b/drivers/power/mmi_lpd_mitigate/Kbuild
+index f11052e..7cd078e 100755
+--- a/drivers/power/mmi_lpd_mitigate/Kbuild
++++ b/drivers/power/mmi_lpd_mitigate/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/qti_glink_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/qti_glink_charger
+ 
+ obj-m += mmi_lpd_mitigate.o
+ 
+diff --git a/drivers/power/mmi_parallel_charger/Kbuild b/drivers/power/mmi_parallel_charger/Kbuild
+index 3c93b07..adb40bb 100644
+--- a/drivers/power/mmi_parallel_charger/Kbuild
++++ b/drivers/power/mmi_parallel_charger/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/power/mmi_parallel_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_parallel_charger
+ 
+ obj-m += mmi_parallel_charger.o
+ mmi_parallel_charger-objs += mmi_charger_class.o
+diff --git a/drivers/power/mmi_parallel_charger_iio/Kbuild b/drivers/power/mmi_parallel_charger_iio/Kbuild
+index 911a5b3..365b339 100644
+--- a/drivers/power/mmi_parallel_charger_iio/Kbuild
++++ b/drivers/power/mmi_parallel_charger_iio/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/drivers/power/mmi_parallel_charger_iio
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_parallel_charger_iio
+ 
+ obj-m += mmi_parallel_charger_iio.o
+ mmi_parallel_charger_iio-objs += mmi_charger_class.o
+diff --git a/drivers/power/mmi_parallel_charger_qc3p/Kbuild b/drivers/power/mmi_parallel_charger_qc3p/Kbuild
+index 9b204fd..a24b330 100644
+--- a/drivers/power/mmi_parallel_charger_qc3p/Kbuild
++++ b/drivers/power/mmi_parallel_charger_qc3p/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/power/mmi_parallel_charger_qc3p
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_parallel_charger_qc3p
+ 
+ obj-m += mmi_parallel_charger_qc3p.o
+ mmi_parallel_charger_qc3p-objs += mmi_charger_class.o
+diff --git a/drivers/power/mmi_pl_chg_manager/Kbuild b/drivers/power/mmi_pl_chg_manager/Kbuild
+index c3cf641..51a7f6d 100644
+--- a/drivers/power/mmi_pl_chg_manager/Kbuild
++++ b/drivers/power/mmi_pl_chg_manager/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include \
+-		-I$(TOP)/motorola/kernel/modules/drivers/power/mmi_pl_chg_manager
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_pl_chg_manager
+ 
+ obj-m += mmi_pl_chg_manager.o
+diff --git a/drivers/power/mmi_qc3p_wt6670f/Kbuild b/drivers/power/mmi_qc3p_wt6670f/Kbuild
+index 3aa60e0..dd712bc 100644
+--- a/drivers/power/mmi_qc3p_wt6670f/Kbuild
++++ b/drivers/power/mmi_qc3p_wt6670f/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/drivers/power/mmi_qc3p_wt6670f
+ ifneq ($(filter m y,$(CONFIG_MMI_QC3P_TURBO_CHARGER_ISP_5G)),)
+     EXTRA_CFLAGS += -DCONFIG_MMI_QC3P_TURBO_CHARGER_ISP_5G
+diff --git a/drivers/power/mmi_qns_system/Kbuild b/drivers/power/mmi_qns_system/Kbuild
+index 76ceda9..7c304ed 100755
+--- a/drivers/power/mmi_qns_system/Kbuild
++++ b/drivers/power/mmi_qns_system/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += mmi_qns_system.o
+diff --git a/drivers/power/mmi_sc8541_iio/Kbuild b/drivers/power/mmi_sc8541_iio/Kbuild
+index 188a607..30d49fb 100644
+--- a/drivers/power/mmi_sc8541_iio/Kbuild
++++ b/drivers/power/mmi_sc8541_iio/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/sc8541_mmi_iio
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/sc8541_mmi_iio
+ 
+ obj-m += sc8541_mmi_iio.o
+diff --git a/drivers/power/mmi_sc8549/Kbuild b/drivers/power/mmi_sc8549/Kbuild
+index e79ade6..9fd3f1b 100644
+--- a/drivers/power/mmi_sc8549/Kbuild
++++ b/drivers/power/mmi_sc8549/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_sc8549
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_sc8549
+ 
+ obj-m += mmi_sc8549.o
+ 
+diff --git a/drivers/power/p938x_charger/Kbuild b/drivers/power/p938x_charger/Kbuild
+index e2ccdf5..a2f18e9 100755
+--- a/drivers/power/p938x_charger/Kbuild
++++ b/drivers/power/p938x_charger/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+     EXTRA_CFLAGS += -DP938X_USER_DEBUG
+diff --git a/drivers/power/pogo_pen_charger/Kbuild b/drivers/power/pogo_pen_charger/Kbuild
+index 43d5c9d..ab3b360 100755
+--- a/drivers/power/pogo_pen_charger/Kbuild
++++ b/drivers/power/pogo_pen_charger/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/pogo_pen_charger
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/pogo_pen_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += pogo_pen_charger.o
+ 
+diff --git a/drivers/power/qpnp-smbcharger-mmi/Kbuild b/drivers/power/qpnp-smbcharger-mmi/Kbuild
+index 1498508..6858c37 100755
+--- a/drivers/power/qpnp-smbcharger-mmi/Kbuild
++++ b/drivers/power/qpnp-smbcharger-mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_PD_CHARGER_MMI)),)
+ 	EXTRA_CFLAGS += -DCONFIG_PD_CHARGER_MMI
+diff --git a/drivers/power/qpnp_adaptive_charge/Kbuild b/drivers/power/qpnp_adaptive_charge/Kbuild
+index db45f06..cc33d8b 100755
+--- a/drivers/power/qpnp_adaptive_charge/Kbuild
++++ b/drivers/power/qpnp_adaptive_charge/Kbuild
+@@ -1,16 +1,16 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_USE_MMI_CHARGER)),)
+ 	EXTRA_CFLAGS += -DUSE_MMI_CHARGER
+-	EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_charger
++	EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_charger
+ 	KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../mmi_charger/$(GKI_OBJ_MODULE_DIR)/Module.symvers
+ endif
+ 
+ ifneq ($(filter m y,$(CONFIG_USE_MMI_GLINK_CHARGER)),)
+ 	EXTRA_CFLAGS += -DUSE_MMI_GLINK_CHARGER
+-	EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_glink_charger
++	EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_glink_charger
+ 	KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../mmi_glink_charger/$(GKI_OBJ_MODULE_DIR)/Module.symvers
+ endif
+ 
+diff --git a/drivers/power/qpnp_smb_basic_charger/Kbuild b/drivers/power/qpnp_smb_basic_charger/Kbuild
+index a1a7eae..b98dc2b 100755
+--- a/drivers/power/qpnp_smb_basic_charger/Kbuild
++++ b/drivers/power/qpnp_smb_basic_charger/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_charger
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y,$(CONFIG_PD_CHARGER_MMI)),)
+ 	EXTRA_CFLAGS += -DCONFIG_PD_CHARGER_MMI
+diff --git a/drivers/power/qti_battery_charger_mmi/Kbuild b/drivers/power/qti_battery_charger_mmi/Kbuild
+index b078ca7..1edf6a1 100755
+--- a/drivers/power/qti_battery_charger_mmi/Kbuild
++++ b/drivers/power/qti_battery_charger_mmi/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += qti_battery_charger_mmi.o
+diff --git a/drivers/power/qti_glink_charger/Kbuild b/drivers/power/qti_glink_charger/Kbuild
+index c7a6d55..2387dec 100755
+--- a/drivers/power/qti_glink_charger/Kbuild
++++ b/drivers/power/qti_glink_charger/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_charger
+ 
+ ifneq ($(filter m y,$(CONFIG_WIRELESS_CPS4035B)),)
+ 	EXTRA_CFLAGS += -DWIRELESS_CPS4035B
+diff --git a/drivers/power/rt9426a_fg_mmi/Kbuild b/drivers/power/rt9426a_fg_mmi/Kbuild
+index 0c0aa78..954f506 100644
+--- a/drivers/power/rt9426a_fg_mmi/Kbuild
++++ b/drivers/power/rt9426a_fg_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/drivers/power/rt9426a_fg_mmi
+ 
+ rt9426a_fg_mmi-objs += rt9426a_battery.o
+diff --git a/drivers/power/rt9467_chg_mmi/Kbuild b/drivers/power/rt9467_chg_mmi/Kbuild
+index 07f61b4..cfcf2c7 100644
+--- a/drivers/power/rt9467_chg_mmi/Kbuild
++++ b/drivers/power/rt9467_chg_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/rt9467_chg_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/rt9467_chg_mmi
+ 
+ obj-m += rt9467_charger.o
+ 
+diff --git a/drivers/power/rt9471_chg_mmi/Kbuild b/drivers/power/rt9471_chg_mmi/Kbuild
+index dbe3b25..acda68e 100644
+--- a/drivers/power/rt9471_chg_mmi/Kbuild
++++ b/drivers/power/rt9471_chg_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/rt9471_chg_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/rt9471_chg_mmi
+ 
+ ifneq ($(filter m y,$(CONFIG_MMI_QC3P_TURBO_CHARGER)),)
+         EXTRA_CFLAGS += -DCONFIG_MMI_QC3P_TURBO_CHARGER
+diff --git a/drivers/power/sc760x_charger_mmi/Kbuild b/drivers/power/sc760x_charger_mmi/Kbuild
+index 60e156b..4cf8929 100644
+--- a/drivers/power/sc760x_charger_mmi/Kbuild
++++ b/drivers/power/sc760x_charger_mmi/Kbuild
+@@ -1,8 +1,8 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/sc760x_charger_mmi \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/sc760x_charger_mmi \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_charger
+ 
+ ifneq ($(filter m y,$(CONFIG_THERMAL_RATIO_CONTROL)),)
+ 	EXTRA_CFLAGS += -DTHERMAL_RATIO_CONTROL
+diff --git a/drivers/power/sd77426_fg_mmi/Kbuild b/drivers/power/sd77426_fg_mmi/Kbuild
+index f2f6f48..44238b9 100644
+--- a/drivers/power/sd77426_fg_mmi/Kbuild
++++ b/drivers/power/sd77426_fg_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/drivers/power/sd77426_fg_mmi
+ 
+ sd77426_fg_mmi-objs += oz8806_battery.o
+diff --git a/drivers/power/sgm4154x_charger_lite/Kbuild b/drivers/power/sgm4154x_charger_lite/Kbuild
+index 3b551c3..46384fd 100644
+--- a/drivers/power/sgm4154x_charger_lite/Kbuild
++++ b/drivers/power/sgm4154x_charger_lite/Kbuild
+@@ -1,8 +1,8 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/sgm4154x_charger_lite \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/mmi_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/sgm4154x_charger_lite \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/mmi_charger
+ 
+ ifeq ($(CONFIG_SGM4154X_CHARGER_NAME),)
+ 	EXTRA_CFLAGS += -D__SGM41516D_CHIP_ID__
+diff --git a/drivers/power/sgm4154x_chg_mmi/Kbuild b/drivers/power/sgm4154x_chg_mmi/Kbuild
+index b9fd084..7380fc0 100644
+--- a/drivers/power/sgm4154x_chg_mmi/Kbuild
++++ b/drivers/power/sgm4154x_chg_mmi/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/sgm4154x_chg_mmi
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/sgm4154x_chg_mmi
+ 
+ ifneq ($(filter m y,$(CONFIG_MMI_QC3P_TURBO_CHARGER)),)
+         EXTRA_CFLAGS += -DCONFIG_MMI_QC3P_TURBO_CHARGER
+diff --git a/drivers/power/sm5602_fg_mmi/Kbuild b/drivers/power/sm5602_fg_mmi/Kbuild
+index de7af59..b945fca 100644
+--- a/drivers/power/sm5602_fg_mmi/Kbuild
++++ b/drivers/power/sm5602_fg_mmi/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/drivers/power/sm5602_fg_mmi
+ 
+ sm5602_fg_mmi-objs += sm5602_fg.o
+diff --git a/drivers/power/smart_pen_charger/Kbuild b/drivers/power/smart_pen_charger/Kbuild
+index 7b5f19f..dcdac26 100755
+--- a/drivers/power/smart_pen_charger/Kbuild
++++ b/drivers/power/smart_pen_charger/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power/qti_glink_charger
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power/qti_glink_charger
+ 
+ obj-m += smart_pen_charger.o
+ 
+diff --git a/drivers/power/wakeup_sources/Kbuild b/drivers/power/wakeup_sources/Kbuild
+index 95618af..a8e0624 100644
+--- a/drivers/power/wakeup_sources/Kbuild
++++ b/drivers/power/wakeup_sources/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += wakeup_sources.o
+ 
+diff --git a/drivers/regulator/aw37004/Kbuild b/drivers/regulator/aw37004/Kbuild
+index 8fed145..ad14ef8 100644
+--- a/drivers/regulator/aw37004/Kbuild
++++ b/drivers/regulator/aw37004/Kbuild
+@@ -1,4 +1,4 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m	+= aw37004-regulator.o
+diff --git a/drivers/regulator/aw37501/Kbuild b/drivers/regulator/aw37501/Kbuild
+index bd4323a..16cdf45 100644
+--- a/drivers/regulator/aw37501/Kbuild
++++ b/drivers/regulator/aw37501/Kbuild
+@@ -1,4 +1,4 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m	+= aw37501.o
+diff --git a/drivers/regulator/cam_aw37004/Kbuild b/drivers/regulator/cam_aw37004/Kbuild
+index 8ca13a8..7ad86d4 100644
+--- a/drivers/regulator/cam_aw37004/Kbuild
++++ b/drivers/regulator/cam_aw37004/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ cam_aw37004-objs += aw37004-regulator.o
+ obj-m	+= cam_aw37004.o
+diff --git a/drivers/regulator/cam_aw37004_2nd/Kbuild b/drivers/regulator/cam_aw37004_2nd/Kbuild
+index 9a25e17..9bbca1c 100644
+--- a/drivers/regulator/cam_aw37004_2nd/Kbuild
++++ b/drivers/regulator/cam_aw37004_2nd/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ cam_aw37004_2nd-objs += aw37004-2nd-regulator.o
+ obj-m	+= cam_aw37004_2nd.o
+diff --git a/drivers/regulator/dio8015/Kbuild b/drivers/regulator/dio8015/Kbuild
+index 5683325..50c838d 100644
+--- a/drivers/regulator/dio8015/Kbuild
++++ b/drivers/regulator/dio8015/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ dio8015-objs += dio8015-regulator.o
+ obj-m	+= dio8015.o
+diff --git a/drivers/regulator/dio8018/Kbuild b/drivers/regulator/dio8018/Kbuild
+index 200fbe5..64af76e 100644
+--- a/drivers/regulator/dio8018/Kbuild
++++ b/drivers/regulator/dio8018/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ dio8018-objs += dio8018-regulator.o
+ obj-m	+= dio8018.o
+diff --git a/drivers/regulator/et5904/Kbuild b/drivers/regulator/et5904/Kbuild
+index d62cd7d..6509de4 100644
+--- a/drivers/regulator/et5904/Kbuild
++++ b/drivers/regulator/et5904/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter m y, $(PICOLEAF_DATA_FOR_TOUCH)),)
+ 	EXTRA_CFLAGS += -DPICOLEAF_DATA_EN
+diff --git a/drivers/regulator/et5907/Kbuild b/drivers/regulator/et5907/Kbuild
+index 1dcb8c5..2944743 100644
+--- a/drivers/regulator/et5907/Kbuild
++++ b/drivers/regulator/et5907/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ et5907-objs += et5907-regulator.o
+ obj-m	+= et5907.o
+diff --git a/drivers/regulator/ocp2138/Kbuild b/drivers/regulator/ocp2138/Kbuild
+index 4d5b3eb..c2b740e 100644
+--- a/drivers/regulator/ocp2138/Kbuild
++++ b/drivers/regulator/ocp2138/Kbuild
+@@ -1,4 +1,4 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m	+= ocp2138.o
+diff --git a/drivers/regulator/slg51000/Kbuild b/drivers/regulator/slg51000/Kbuild
+index 90ac9f3..bc853f7 100644
+--- a/drivers/regulator/slg51000/Kbuild
++++ b/drivers/regulator/slg51000/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ slg51000-objs += slg51000-regulator.o
+ obj-m	+= slg51000.o
+diff --git a/drivers/regulator/slg5bm43670/Kbuild b/drivers/regulator/slg5bm43670/Kbuild
+index e258ce7..bb9ba40 100644
+--- a/drivers/regulator/slg5bm43670/Kbuild
++++ b/drivers/regulator/slg5bm43670/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ slg5bm43670-objs += slg5bm43670-regulator.o
+ obj-m	+= slg5bm43670.o
+diff --git a/drivers/regulator/wl2864c/Kbuild b/drivers/regulator/wl2864c/Kbuild
+index 359e291..61ddd84 100644
+--- a/drivers/regulator/wl2864c/Kbuild
++++ b/drivers/regulator/wl2864c/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ wl2864c-objs += wl2864c-regulator.o
+ obj-m	+= wl2864c.o
+diff --git a/drivers/regulator/wl2866d/Kbuild b/drivers/regulator/wl2866d/Kbuild
+index 279f1df..618f1f1 100644
+--- a/drivers/regulator/wl2866d/Kbuild
++++ b/drivers/regulator/wl2866d/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ wl2866d-objs += wl2866d-regulator.o
+ obj-m	+= wl2866d.o
+diff --git a/drivers/regulator/wl2868c/Kbuild b/drivers/regulator/wl2868c/Kbuild
+index 6f22a3e..19f1fa2 100644
+--- a/drivers/regulator/wl2868c/Kbuild
++++ b/drivers/regulator/wl2868c/Kbuild
+@@ -1,5 +1,5 @@
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ wl2868c-objs += wl2868c-regulator.o
+ obj-m	+= wl2868c.o
+diff --git a/drivers/security/moto_kern_prot/Kbuild b/drivers/security/moto_kern_prot/Kbuild
+index 8392b0f..cf28a55 100644
+--- a/drivers/security/moto_kern_prot/Kbuild
++++ b/drivers/security/moto_kern_prot/Kbuild
+@@ -2,8 +2,8 @@
+ # the same code for MTK, and this comment will be removed once this is
+ # done.
+ ccflags-y += -Wall
+-ccflags-y += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/misc/moto_kern_prot
+-ccflags-y += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++ccflags-y += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/misc/moto_kern_prot
++ccflags-y += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ ccflags-y += -I$(ANDROID_BUILD_TOP)/kernel_platform/msm-kernel/include
+ ccflags-y += -I$(ANDROID_BUILD_TOP)/kernel_platform/msm-kernel/
+ 
+diff --git a/drivers/security/mrkp_test/Kbuild b/drivers/security/mrkp_test/Kbuild
+index 367833c..bba117e 100644
+--- a/drivers/security/mrkp_test/Kbuild
++++ b/drivers/security/mrkp_test/Kbuild
+@@ -2,8 +2,8 @@
+ # the same code for MTK, and this comment will be removed once this is
+ # done.
+ ccflags-y += -Wall
+-ccflags-y += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/mrkp_test/
+-ccflags-y += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include/
++ccflags-y += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/mrkp_test/
++ccflags-y += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include/
+ ccflags-y += -I$(ANDROID_BUILD_TOP)/kernel_platform/msm-kernel/include/
+ ccflags-y += -I$(ANDROID_BUILD_TOP)/kernel_platform/msm-kernel/
+ 
+diff --git a/drivers/sensors/Kbuild b/drivers/sensors/Kbuild
+index b50ef6c..e5071bf 100644
+--- a/drivers/sensors/Kbuild
++++ b/drivers/sensors/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += sensors_class.o
+\ No newline at end of file
+diff --git a/drivers/sleep_time_log/Kbuild b/drivers/sleep_time_log/Kbuild
+index 7ce1312..8089e75 100644
+--- a/drivers/sleep_time_log/Kbuild
++++ b/drivers/sleep_time_log/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ sleep_time_log-y += sleep_time_log.o
+ obj-m += sleep_time_log.o
+diff --git a/drivers/sys_monitor/Kbuild b/drivers/sys_monitor/Kbuild
+index 060cc33..09b5b5d 100644
+--- a/drivers/sys_monitor/Kbuild
++++ b/drivers/sys_monitor/Kbuild
+@@ -4,10 +4,10 @@ endif
+ 
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel_platform/common
+ EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/kernel_platform/msm-kernel/net/qrtr/
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/power_monitor
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/power_monitor
+ 
+ KBUILD_EXTRA_SYMBOLS := $(CURDIR)/../../kernel_platform/msm-kernel/Module.symvers
+ 
+diff --git a/drivers/tzlog_dump/Kbuild b/drivers/tzlog_dump/Kbuild
+index 72c4fbf..0f12e9d 100644
+--- a/drivers/tzlog_dump/Kbuild
++++ b/drivers/tzlog_dump/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += tzlog_dump.o
+ KBUILD_EXTRA_SYMBOLS += $(CURDIR)/$(KBUILD_EXTMOD)/../mmi_annotate/Module.symvers
+diff --git a/drivers/usb/typec/adapter_class/Kbuild b/drivers/usb/typec/adapter_class/Kbuild
+index f003c3c..53f2ad3 100755
+--- a/drivers/usb/typec/adapter_class/Kbuild
++++ b/drivers/usb/typec/adapter_class/Kbuild
+@@ -1,5 +1,5 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += adapter_class.o
+diff --git a/drivers/usb/typec/mmi_tcpc/Kbuild b/drivers/usb/typec/mmi_tcpc/Kbuild
+index 72f7413..42403dd 100644
+--- a/drivers/usb/typec/mmi_tcpc/Kbuild
++++ b/drivers/usb/typec/mmi_tcpc/Kbuild
+@@ -1,7 +1,7 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include \
+-		-I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/drivers/usb/typec/mmi_tcpc
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include \
++		-I$(KERNEL_SRC)/../sm6475-modules/motorola/drivers/usb/typec/mmi_tcpc
+ 
+ subdir-ccflags-y += -Wall -Werror -DCONFIG_RT_REGMAP
+ 
+diff --git a/drivers/uwb/qm35/Kbuild b/drivers/uwb/qm35/Kbuild
+index 6353f0f..3dcb937 100644
+--- a/drivers/uwb/qm35/Kbuild
++++ b/drivers/uwb/qm35/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ 
+ ifneq ($(filter m y,$(CONFIG_QM35_SPI_DEBUG_FW)),)
+diff --git a/drivers/uwb/qm358/Kbuild b/drivers/uwb/qm358/Kbuild
+index ddebd38..c8955be 100644
+--- a/drivers/uwb/qm358/Kbuild
++++ b/drivers/uwb/qm358/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ GITVERSION := unknown
+ 
+diff --git a/drivers/uwb/sr100/Kbuild b/drivers/uwb/sr100/Kbuild
+index dbd8f83..87d598e 100644
+--- a/drivers/uwb/sr100/Kbuild
++++ b/drivers/uwb/sr100/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ ifneq ($(filter banks%, $(TARGET_PRODUCT)),)
+ 	EXTRA_CFLAGS += -DSOFTDEP_GPIO_PCAL6408
+diff --git a/drivers/watchdog_cpu_ctx/Kbuild b/drivers/watchdog_cpu_ctx/Kbuild
+index 7772a58..7f854bd 100644
+--- a/drivers/watchdog_cpu_ctx/Kbuild
++++ b/drivers/watchdog_cpu_ctx/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += watchdog_cpu_ctx.o
+ 
+diff --git a/drivers/watchdogtest/Kbuild b/drivers/watchdogtest/Kbuild
+index 80bccd7..cbad8f4 100644
+--- a/drivers/watchdogtest/Kbuild
++++ b/drivers/watchdogtest/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(ANDROID_BUILD_TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ obj-m += watchdogtest.o
+ ifeq ($(shell expr $(KERNELVERSION) \< 5.4), 1)
+diff --git a/sound/soc/codecs/Kbuild b/sound/soc/codecs/Kbuild
+index 3892d7a..25e6a3a 100644
+--- a/sound/soc/codecs/Kbuild
++++ b/sound/soc/codecs/Kbuild
+@@ -1,6 +1,6 @@
+ # add -Wall to try to catch everything we can.
+ EXTRA_CFLAGS += -Wall
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/include
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/include
+ 
+ HAVE_AUDIO_KERNEL = $(shell test -d $(TOP)/vendor/qcom/opensource/audio-kernel && echo 1)
+ 
+@@ -41,7 +41,7 @@ GIT_VERSION=$(shell cd $(PLMA_HOSTSW_DIR); git describe --tags --dirty --match "
+ EXTRA_CFLAGS += -DTFA98XX_GIT_VERSIONS=\"$(GIT_VERSION)\"
+ # debugging support (also enables trace_printk)
+ EXTRA_CFLAGS += -DTFA9874_NONDSP_STEREO
+-EXTRA_CFLAGS += -I$(TOP)/motorola/kernel/modules/sound/soc/codecs/inc
++EXTRA_CFLAGS += -I$(KERNEL_SRC)/../sm6475-modules/motorola/sound/soc/codecs/inc
+ EXTRA_CFLAGS += -Werror
+ 
+ snd_soc_tfa9874-objs += tfa98xx.o

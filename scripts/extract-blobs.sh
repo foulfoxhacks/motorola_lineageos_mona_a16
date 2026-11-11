@@ -80,6 +80,10 @@ fi
 echo "==> vendor trees"
 du -sh "$SRC/vendor/motorola/mona" "$SRC/vendor/motorola/sm6475-common" 2>/dev/null || true
 
+echo
+echo "==> staging stock device trees (DTB + DTBO)"
+FW="$FW" SRC="$SRC" bash <(tr -d '\r' < "$HERE/extract-dt.sh")
+
 missing=$(grep -c 'warning.*[Nn]ot found\|Failed to extract' "$LOG" || true)
 echo
 echo "==> warnings: ${missing:-0} (see $LOG)"
